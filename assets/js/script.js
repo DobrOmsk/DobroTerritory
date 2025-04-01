@@ -1,47 +1,57 @@
-// Можно добавить функциональность, например:
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Подсветка активной страницы в навигации
-    const currentPage = window.location.pathname.split('/').pop();
-    const navLinks = document.querySelectorAll('nav a');
+  const modules = document.querySelectorAll('.module');
+  const isMobile = window.innerWidth <= 768;
+
+  // Функция для закрытия всех модулей
+  function closeAllModules() {
+    modules.forEach(module => {
+      module.classList.remove('active');
+    });
+  }
+
+  // Обработчик для модулей
+  function setupModule(module) {
+    const header = module.querySelector('.module-header');
     
-    navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-            link.classList.add('active');
+    header.addEventListener('click', function(e) {
+      if (isMobile) {
+        // На мобильных: toggle текущего модуля
+        module.classList.toggle('active');
+      } else {
+        // На десктопах: закрыть все, открыть текущий
+        if (!module.classList.contains('active')) {
+          closeAllModules();
+          module.classList.add('active');
         }
+      }
     });
 
-    // 2. Динамическая загрузка PDF (если нужно)
-    // Можно использовать PDF.js для кастомного просмотра
-    // https://mozilla.github.io/pdf.js/
-});
-
-// 3. Пример: кнопка "Наверх"
-const scrollToTopBtn = document.createElement('button');
-scrollToTopBtn.textContent = '↑ Наверх';
-scrollToTopBtn.style.position = 'fixed';
-scrollToTopBtn.style.bottom = '60px';
-scrollToTopBtn.style.right = '20px';
-scrollToTopBtn.style.padding = '10px';
-scrollToTopBtn.style.background = '#3498db';
-scrollToTopBtn.style.color = 'white';
-scrollToTopBtn.style.border = 'none';
-scrollToTopBtn.style.borderRadius = '5px';
-scrollToTopBtn.style.cursor = 'pointer';
-scrollToTopBtn.style.display = 'none';
-
-document.body.appendChild(scrollToTopBtn);
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollToTopBtn.style.display = 'block';
-    } else {
-        scrollToTopBtn.style.display = 'none';
+    // Для десктопов добавляем обработчик hover
+    if (!isMobile) {
+      module.addEventListener('mouseenter', function() {
+        closeAllModules();
+        module.classList.add('active');
+      });
     }
-});
+  }
 
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+  // Инициализация всех модулей
+  modules.forEach(setupModule);
+
+  // Закрытие модулей при клике вне их области (для мобильных)
+  if (isMobile) {
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.module')) {
+        closeAllModules();
+      }
     });
+  }
+
+  // Обновление при изменении размера окна
+  window.addEventListener('resize', function() {
+    const newIsMobile = window.innerWidth <= 768;
+    if (isMobile !== newIsMobile) {
+      closeAllModules();
+    }
+  });
 });
