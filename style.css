@@ -56,14 +56,16 @@ body {
   color: var(--text-color);
 }
 
-/* Модули */
+/* Контейнер модулей */
 .modules-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin: 3rem 0;
+  align-items: start;
 }
 
+/* Стили модулей */
 .module {
   background: var(--white);
   border-radius: 15px;
@@ -72,6 +74,7 @@ body {
   transition: var(--transition);
   position: relative;
   border-top: 5px solid var(--primary-color);
+  min-height: 80px;
 }
 
 .module-header {
@@ -96,26 +99,21 @@ body {
 .module-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out;
+  transition: max-height 0.3s ease-out;
   padding: 0 1.5rem;
 }
 
 .module.active .module-content {
   max-height: 1000px;
-  overflow-y: auto;
   padding: 0 1.5rem 1.5rem;
+  overflow-y: auto;
 }
 
 .module.active .module-icon {
   transform: rotate(180deg);
 }
 
-.module:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Задания */
+/* Стили для заданий */
 .tasks-list {
   list-style: none;
   padding: 0;
@@ -147,9 +145,9 @@ body {
 }
 
 .task-link {
-  display: inline-block;
+  display: block;
   margin-top: 0.8rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--white);
   border-radius: 6px;
@@ -157,8 +155,6 @@ body {
   font-size: 0.9rem;
   transition: var(--transition);
   text-align: center;
-  width: auto;
-  box-sizing: border-box;
 }
 
 .task-link:hover {
@@ -176,26 +172,25 @@ body {
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
-  .project-title {
-    font-size: 2rem;
-  }
-  
+@media (max-width: 991px) {
   .modules-container {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .module-header {
     padding: 1.2rem;
   }
-  
-  .module-title {
-    font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 2rem;
   }
   
   .task-link {
-    width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
   }
@@ -204,31 +199,35 @@ body {
 @media (max-width: 480px) {
   .project-title {
     font-size: 1.8rem;
-    padding: 0 0.5rem;
   }
   
-  .project-description {
-    font-size: 1rem;
-    padding: 0 0.5rem;
+  .module-title {
+    font-size: 1.3rem;
   }
   
   .module-header {
-    padding: 1rem 0.8rem;
+    padding: 1rem;
   }
   
   .task-item {
-    padding: 1rem 0.8rem;
+    padding: 0.8rem;
   }
   
   .module-content {
-    padding: 0 0.8rem !important;
+    padding: 0 1rem !important;
+  }
+}
+
+/* Специальные стили для центрирования 3 модулей */
+@media (min-width: 992px) {
+  .modules-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
   }
   
-  .task-title {
-    font-size: 1rem;
-  }
-  
-  .task-description {
-    font-size: 0.85rem;
+  .module {
+    width: 100%;
+    max-width: 350px;
   }
 }
