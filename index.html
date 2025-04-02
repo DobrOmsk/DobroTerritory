@@ -3,12 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Добрая территория - методические материалы</title>
+  <title>Добрая территория</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Навигационное меню -->
+  <nav class="navbar">
+    <button class="menu-button">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Главная</a></li>
+      <li class="nav-item"><a href="module1.html" class="nav-link">Модуль 1</a></li>
+      <li class="nav-item"><a href="module2.html" class="nav-link">Модуль 2</a></li>
+      <li class="nav-item"><a href="module3.html" class="nav-link">Модуль 3</a></li>
+      <li class="nav-item"><a href="documents.html" class="nav-link">Документы</a></li>
+      <li class="nav-item"><a href="brandbook.html" class="nav-link">Брендбук</a></li>
+    </ul>
+  </nav>
+
   <div class="container">
     <header class="header">
       <img src="logo.png" alt="Добрая территория" class="logo">
@@ -116,11 +131,56 @@
         </div>
       </div>
     </div>
-    
+
+    <!-- Документы -->
+    <h2 class="section-title">Документы</h2>
+    <div class="documents-container">
+      <div class="document-block">
+        <div class="block-header">
+          <h3 class="block-title">Нормативные документы</h3>
+          <i class="fas fa-chevron-down block-icon"></i>
+        </div>
+        <div class="block-content">
+          <ul class="documents-list">
+            <li class="document-item">
+              <h4 class="task-title">Положение о проекте</h4>
+              <a href="#" class="document-link">Скачать PDF</a>
+            </li>
+            <!-- Другие документы -->
+          </ul>
+        </div>
+      </div>
+      <!-- Другие блоки документов -->
+    </div>
+
+    <!-- Брендбук -->
+    <h2 class="section-title">Брендбук</h2>
+    <div class="brandbook-container">
+      <div class="brandbook-block">
+        <div class="block-header">
+          <h3 class="block-title">Фирменный стиль</h3>
+          <i class="fas fa-chevron-down block-icon"></i>
+        </div>
+        <div class="block-content">
+          <ul class="brandbook-list">
+            <li class="brandbook-item">
+              <h4 class="task-title">Логотипы</h4>
+              <a href="#" class="brandbook-link">Скачать материалы</a>
+            </li>
+            <!-- Другие элементы брендбука -->
+          </ul>
+        </div>
+      </div>
+      <!-- Другие блоки брендбука -->
+    </div>
+
+    <!-- Подвал -->
     <footer class="footer">
       <p>© 2023 Проект "Добрая территория". Все права защищены.</p>
     </footer>
   </div>
+
+  <script src="js/script.js"></script>
   
   <script>
     // Обработка раскрытия/закрытия модулей
