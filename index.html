@@ -174,45 +174,10 @@
       <!-- Другие блоки брендбука -->
     </div>
 
-    <!-- Подвал -->
-    <footer class="footer">
-      <p>© 2023 Проект "Добрая территория". Все права защищены.</p>
-    </footer>
-  </div>
+
+
+  
 
   <script src="script.js"></script>
-  
-  <script>
-    // Обработка раскрытия/закрытия модулей
-    document.querySelectorAll('.module-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const module = header.parentElement;
-        module.classList.toggle('active');
-      });
-      
-      // Для мобильных устройств закрываем модуль при клике вне его
-      if (window.innerWidth <= 768) {
-        document.addEventListener('click', (e) => {
-          if (!e.target.closest('.module')) {
-            document.querySelectorAll('.module').forEach(mod => {
-              mod.classList.remove('active');
-            });
-          }
-        });
-      }
-    });
-    
-    // На десктопах модули раскрываются при наведении
-    if (window.innerWidth > 768) {
-      document.querySelectorAll('.module').forEach(module => {
-        module.addEventListener('mouseenter', () => {
-          document.querySelectorAll('.module').forEach(mod => {
-            mod.classList.remove('active');
-          });
-          module.classList.add('active');
-        });
-      });
-    }
-  </script>
 </body>
 </html>
