@@ -1,79 +1,65 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const modules = document.querySelectorAll('.module');
-  const isMobile = window.innerWidth <= 768;
-
-  // Функция для закрытия всех модулей
-  function closeAllModules() {
-    modules.forEach(module => {
-      module.classList.remove('active');
+  // Мобильное меню
+  const menuButton = document.querySelector('.menu-button');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (menuButton && navMenu) {
+    menuButton.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
     });
   }
 
-  // Функция для установки правильной высоты
-  function setContentHeight(module, open) {
-    const content = module.querySelector('.module-content');
-    if (open) {
-      const contentHeight = content.scrollHeight + 30; // + отступы
-      content.style.maxHeight = contentHeight + 'px';
-    } else {
-      content.style.maxHeight = '0';
+  // Функция для работы раскрывающихся блоков
+  function setupBlocks(containerClass) {
+    const blocks = document.querySelectorAll(`${containerClass} .module, 
+                                         ${containerClass} .document-block, 
+                                         ${containerClass} .brandbook-block`);
+    const isMobile = window.innerWidth <= 991;
+
+    blocks.forEach(block => {
+      const header = block.querySelector('.block-header');
+      const content = block.querySelector('.block-content');
+      
+      header.addEventListener('click', function() {
+        if (isMobile) {
+          const wasActive = block.classList.contains('active');
+          closeAllBlocks(containerClass);
+          if (!wasActive) {
+            block.classList.add('active');
+          }
+        }
+      });
+
+      if (!isMobile) {
+        block.addEventListener('mouseenter', function() {
+          closeAllBlocks(containerClass);
+          block.classList.add('active');
+        });
+        
+        block.addEventListener('mouseleave', function() {
+          block.classList.remove('active');
+        });
+      }
+    });
+
+    function closeAllBlocks(container) {
+      document.querySelectorAll(`${container} .active`).forEach(activeBlock => {
+        activeBlock.classList.remove('active');
+      });
     }
   }
 
-  // Инициализация модулей
-  function initModules() {
-    modules.forEach(module => {
-      const header = module.querySelector('.module-header');
-      const content = module.querySelector('.module-content');
-      
-      // Начальное состояние
-      setContentHeight(module, false);
-      
-      // Обработчики событий
-      if (isMobile) {
-        // Мобильная версия - по клику
-        header.addEventListener('click', function() {
-          const wasActive = module.classList.contains('active');
-          closeAllModules();
-          if (!wasActive) {
-            module.classList.add('active');
-            setContentHeight(module, true);
-          }
-        });
-      } else {
-        // Десктоп версия - по наведению
-        module.addEventListener('mouseenter', function() {
-          closeAllModules();
-          module.classList.add('active');
-          setContentHeight(module, true);
-        });
-        
-        module.addEventListener('mouseleave', function() {
-          module.classList.remove('active');
-          setContentHeight(module, false);
-        });
-      }
-    });
-  }
-
-  // Обработчик клика вне модуля (для мобильных)
-  if (isMobile) {
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.module')) {
-        closeAllModules();
-      }
-    });
-  }
+  // Инициализация всех блоков
+  setupBlocks('.modules-container');
+  setupBlocks('.documents-container');
+  setupBlocks('.brandbook-container');
 
   // Обработчик изменения размера окна
   window.addEventListener('resize', function() {
-    const newIsMobile = window.innerWidth <= 768;
-    if (isMobile !== newIsMobile) {
-      isMobile = newIsMobile;
-      closeAllModules();
+    if (window.innerWidth > 991) {
+      document.querySelectorAll('.nav-menu').forEach(menu => {
+        menu.classList.remove('active');
+      });
     }
   });
-
-  // Инициализация
-  initModules();
 });
