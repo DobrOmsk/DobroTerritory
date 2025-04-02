@@ -1,0 +1,203 @@
+/* Основные переменные */
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --text-color: #2c3e50;
+  --light-gray: #f8fafc;
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Базовые стили */
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.project-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.project-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* Модули */
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.module {
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+  border-top: 5px solid var(--primary-color);
+}
+
+.module-header {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.module-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.module-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 1.5rem;
+}
+
+.module.active .module-content {
+  max-height: 500px;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.module.active .module-icon {
+  transform: rotate(180deg);
+}
+
+.module:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Задания */
+.tasks-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.task-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--light-gray);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.task-item:hover {
+  background: #e9f0f8;
+}
+
+.task-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.task-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.task-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.task-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(106, 17, 203, 0.3);
+}
+
+/* Подвал */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 2rem;
+  }
+  
+  .modules-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .module-header {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.8rem;
+  }
+  
+  .module-title {
+    font-size: 1.3rem;
+  }
+  
+  .task-link {
+    width: 100%;
+    text-align: center;
+  }
+}
