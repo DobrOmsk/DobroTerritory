@@ -1,21 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
   const modules = document.querySelectorAll('.module');
-  let isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 768;
 
   // Функция для закрытия всех модулей
   function closeAllModules() {
     modules.forEach(module => {
       module.classList.remove('active');
-      const content = module.querySelector('.module-content');
-      content.style.maxHeight = '0';
     });
   }
 
-  // Функция для установки правильной высоты контента
-  function setContentHeight(module) {
+  // Функция для установки правильной высоты
+  function setContentHeight(module, open) {
     const content = module.querySelector('.module-content');
-    if (module.classList.contains('active')) {
-      content.style.maxHeight = content.scrollHeight + 'px';
+    if (open) {
+      const contentHeight = content.scrollHeight + 30; // + отступы
+      content.style.maxHeight = contentHeight + 'px';
     } else {
       content.style.maxHeight = '0';
     }
@@ -27,30 +26,31 @@ document.addEventListener('DOMContentLoaded', function() {
       const header = module.querySelector('.module-header');
       const content = module.querySelector('.module-content');
       
-      // Установка начальной высоты
-      setContentHeight(module);
+      // Начальное состояние
+      setContentHeight(module, false);
       
-      // Обработчик клика/наведения
+      // Обработчики событий
       if (isMobile) {
+        // Мобильная версия - по клику
         header.addEventListener('click', function() {
-          if (module.classList.contains('active')) {
-            module.classList.remove('active');
-          } else {
-            closeAllModules();
+          const wasActive = module.classList.contains('active');
+          closeAllModules();
+          if (!wasActive) {
             module.classList.add('active');
+            setContentHeight(module, true);
           }
-          setContentHeight(module);
         });
       } else {
+        // Десктоп версия - по наведению
         module.addEventListener('mouseenter', function() {
           closeAllModules();
           module.classList.add('active');
-          setContentHeight(module);
+          setContentHeight(module, true);
         });
         
         module.addEventListener('mouseleave', function() {
           module.classList.remove('active');
-          setContentHeight(module);
+          setContentHeight(module, false);
         });
       }
     });
