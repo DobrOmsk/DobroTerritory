@@ -12,19 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Раскрывающиеся блоки
   document.querySelectorAll('.block-header').forEach(header => {
     header.addEventListener('click', function() {
-      const block = this.parentElement;
-      const isActive = block.classList.contains('active');
+      const block = this.closest('.module, .document-block, .brandbook-block');
+      block.classList.toggle('active');
       
-      // Закрываем все блоки в том же контейнере
+      // Закрываем другие блоки в том же контейнере
       const container = block.parentElement;
-      container.querySelectorAll('.active').forEach(activeBlock => {
-        if (activeBlock !== block) {
-          activeBlock.classList.remove('active');
+      container.querySelectorAll('.module, .document-block, .brandbook-block').forEach(otherBlock => {
+        if (otherBlock !== block) {
+          otherBlock.classList.remove('active');
         }
       });
-      
-      // Переключаем текущий блок
-      block.classList.toggle('active', !isActive);
     });
   });
 });
