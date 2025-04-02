@@ -9,32 +9,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Функция для работы раскрывающихся блоков
-  function setupBlocks(containerClass) {
-    const blocks = document.querySelectorAll(`${containerClass} .module, 
-                                         ${containerClass} .document-block, 
-                                         ${containerClass} .brandbook-block`);
-    
-    blocks.forEach(block => {
-      const header = block.querySelector('.block-header');
-      const content = block.querySelector('.block-content');
+  // Раскрывающиеся блоки
+  document.querySelectorAll('.block-header').forEach(header => {
+    header.addEventListener('click', function() {
+      const block = this.parentElement;
+      const isActive = block.classList.contains('active');
       
-      header.addEventListener('click', function() {
-        // Закрываем все блоки в этом контейнере
-        document.querySelectorAll(`${containerClass} .active`).forEach(activeBlock => {
-          if (activeBlock !== block) {
-            activeBlock.classList.remove('active');
-          }
-        });
-        
-        // Переключаем текущий блок
-        block.classList.toggle('active');
+      // Закрываем все блоки в том же контейнере
+      const container = block.parentElement;
+      container.querySelectorAll('.active').forEach(activeBlock => {
+        if (activeBlock !== block) {
+          activeBlock.classList.remove('active');
+        }
       });
+      
+      // Переключаем текущий блок
+      block.classList.toggle('active', !isActive);
     });
-  }
-
-  // Инициализация всех блоков
-  setupBlocks('.modules-container');
-  setupBlocks('.documents-container');
-  setupBlocks('.brandbook-container');
+  });
 });
