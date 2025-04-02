@@ -1,44 +1,62 @@
 document.addEventListener('DOMContentLoaded', function() {
   const modules = document.querySelectorAll('.module');
-  const isMobile = window.innerWidth <= 768;
+  let isMobile = window.innerWidth <= 768;
 
   // Функция для закрытия всех модулей
   function closeAllModules() {
     modules.forEach(module => {
       module.classList.remove('active');
+      const content = module.querySelector('.module-content');
+      content.style.maxHeight = '0';
     });
   }
 
-  // Обработчик для модулей
-  function setupModule(module) {
-    const header = module.querySelector('.module-header');
-    
-    header.addEventListener('click', function(e) {
-      if (isMobile) {
-        // На мобильных: toggle текущего модуля
-        module.classList.toggle('active');
-      } else {
-        // На десктопах: закрыть все, открыть текущий
-        if (!module.classList.contains('active')) {
-          closeAllModules();
-          module.classList.add('active');
-        }
-      }
-    });
-
-    // Для десктопов добавляем обработчик hover
-    if (!isMobile) {
-      module.addEventListener('mouseenter', function() {
-        closeAllModules();
-        module.classList.add('active');
-      });
+  // Функция для установки правильной высоты контента
+  function setContentHeight(module) {
+    const content = module.querySelector('.module-content');
+    if (module.classList.contains('active')) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '0';
     }
   }
 
-  // Инициализация всех модулей
-  modules.forEach(setupModule);
+  // Инициализация модулей
+  function initModules() {
+    modules.forEach(module => {
+      const header = module.querySelector('.module-header');
+      const content = module.querySelector('.module-content');
+      
+      // Установка начальной высоты
+      setContentHeight(module);
+      
+      // Обработчик клика/наведения
+      if (isMobile) {
+        header.addEventListener('click', function() {
+          if (module.classList.contains('active')) {
+            module.classList.remove('active');
+          } else {
+            closeAllModules();
+            module.classList.add('active');
+          }
+          setContentHeight(module);
+        });
+      } else {
+        module.addEventListener('mouseenter', function() {
+          closeAllModules();
+          module.classList.add('active');
+          setContentHeight(module);
+        });
+        
+        module.addEventListener('mouseleave', function() {
+          module.classList.remove('active');
+          setContentHeight(module);
+        });
+      }
+    });
+  }
 
-  // Закрытие модулей при клике вне их области (для мобильных)
+  // Обработчик клика вне модуля (для мобильных)
   if (isMobile) {
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.module')) {
@@ -47,11 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Обновление при изменении размера окна
+  // Обработчик изменения размера окна
   window.addEventListener('resize', function() {
     const newIsMobile = window.innerWidth <= 768;
     if (isMobile !== newIsMobile) {
+      isMobile = newIsMobile;
       closeAllModules();
     }
   });
+
+  // Инициализация
+  initModules();
 });
