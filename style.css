@@ -248,3 +248,29 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Гарантированная работа скрипта */
+.module .block-content,
+.document-block .block-content,
+.brandbook-block .block-content {
+  display: none;
+}
+
+.module.active .block-content,
+.document-block.active .block-content,
+.brandbook-block.active .block-content {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Фикс для GitHub Pages */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
