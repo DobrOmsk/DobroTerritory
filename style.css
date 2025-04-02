@@ -26,14 +26,11 @@ body {
   padding: 0 20px;
 }
 
-/* Меню */
+/* Навигационное меню */
 .navbar {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
 }
 
 .menu-button {
@@ -43,6 +40,7 @@ body {
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
+  margin-right: auto;
 }
 
 .nav-menu {
@@ -67,7 +65,7 @@ body {
 }
 
 .nav-link:hover {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Шапка */
@@ -76,7 +74,33 @@ body {
   padding: 3rem 0 2rem;
 }
 
-/* Общие стили для всех блоков */
+.logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.project-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.project-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* Секции */
 .section-title {
   text-align: center;
   margin: 3rem 0 2rem;
@@ -84,14 +108,20 @@ body {
   color: var(--primary-color);
 }
 
-.modules-container, .documents-container, .brandbook-container {
+/* Контейнеры блоков */
+.modules-container,
+.documents-container,
+.brandbook-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
 
-.module, .document-block, .brandbook-block {
+/* Общие стили блоков */
+.module,
+.document-block,
+.brandbook-block {
   background: var(--white);
   border-radius: 15px;
   box-shadow: var(--shadow);
@@ -103,22 +133,20 @@ body {
   flex-direction: column;
 }
 
-/* Модули */
+/* Цвета окантовки */
 .module {
   border-top: 5px solid var(--primary-color);
 }
 
-/* Документы */
 .document-block {
   border-top: 5px solid var(--documents-color);
 }
 
-/* Брендбук */
 .brandbook-block {
   border-top: 5px solid var(--brandbook-color);
 }
 
-/* Общие стили для заголовков и контента */
+/* Заголовки блоков */
 .block-header {
   padding: 1.5rem;
   cursor: pointer;
@@ -138,6 +166,7 @@ body {
   transition: transform 0.3s;
 }
 
+/* Контент блоков */
 .block-content {
   max-height: 0;
   overflow: hidden;
@@ -155,14 +184,18 @@ body {
   transform: rotate(180deg);
 }
 
-/* Стили для заданий/документов */
-.tasks-list, .documents-list, .brandbook-list {
+/* Списки элементов */
+.tasks-list,
+.documents-list,
+.brandbook-list {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0;
 }
 
-.task-item, .document-item, .brandbook-item {
+.task-item,
+.document-item,
+.brandbook-item {
   margin-bottom: 1rem;
   padding: 1rem;
   background: var(--light-gray);
@@ -170,28 +203,62 @@ body {
   transition: var(--transition);
 }
 
-.task-link, .document-link, .brandbook-link {
+.task-item:hover,
+.document-item:hover,
+.brandbook-item:hover {
+  background: #e9f0f8;
+}
+
+.task-title,
+.document-title,
+.brandbook-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.task-description,
+.document-description,
+.brandbook-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Кнопки */
+.task-link,
+.document-link,
+.brandbook-link {
   display: block;
   margin-top: 0.8rem;
   padding: 0.8rem;
-  color: var(--white);
+  color: var(--text-color);
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.9rem;
   transition: var(--transition);
   text-align: center;
+  font-weight: 500;
 }
 
 .task-link {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 .document-link {
-  background: linear-gradient(135deg, var(--documents-color), #0ebc5d);
+  background-color: var(--documents-color);
 }
 
 .brandbook-link {
-  background: linear-gradient(135deg, var(--brandbook-color), #ff8e8e);
+  background-color: var(--brandbook-color);
+}
+
+.task-link:hover,
+.document-link:hover,
+.brandbook-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Подвал */
@@ -207,13 +274,13 @@ body {
 @media (max-width: 991px) {
   .menu-button {
     display: block;
-    margin: 0 auto;
   }
   
   .nav-menu {
     display: none;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
+    padding: 1rem 0;
   }
   
   .nav-menu.active {
@@ -221,10 +288,12 @@ body {
   }
   
   .nav-item {
-    margin: 0.5rem 0;
+    margin: 0.5rem 1rem;
   }
   
-  .modules-container, .documents-container, .brandbook-container {
+  .modules-container,
+  .documents-container,
+  .brandbook-container {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin-left: auto;
@@ -232,7 +301,21 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
   .block-header {
     padding: 1rem;
   }
@@ -241,11 +324,20 @@ body {
     font-size: 1.3rem;
   }
   
-  .task-item, .document-item, .brandbook-item {
+  .task-item,
+  .document-item,
+  .brandbook-item {
     padding: 0.8rem;
   }
   
   .block-content {
     padding: 0 1rem !important;
+  }
+  
+  .task-link,
+  .document-link,
+  .brandbook-link {
+    padding: 0.8rem;
+    font-size: 1rem;
   }
 }
