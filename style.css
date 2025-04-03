@@ -91,6 +91,7 @@ body {
   margin: 1rem auto;
   max-width: 800px;
   color: var(--text-color);
+  padding: 0 20px;
 }
 
 /* Блоки модулей */
@@ -150,29 +151,36 @@ body {
   margin: 0;
   font-size: 1.3rem;
   color: var(--text-color);
+  padding-left: 15px;
 }
 
 .block-icon {
   font-size: 1.2rem;
   transition: var(--transition);
   color: var(--text-color);
+  margin-right: 15px;
 }
 
-/* Содержимое блоков */
-.module .block-content,
-.document-block .block-content,
-.brandbook-block .block-content {
+/* Основное описание модуля (видимое всегда) */
+.module-description {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Содержимое блоков (скрытое по умолчанию) */
+.tasks-container {
   max-height: 0;
   overflow: hidden;
-  padding: 0 1.5rem;
   transition: all 0.3s ease-out;
+  background-color: #f9f9f9;
 }
 
-.module.active .block-content,
+.module.active .tasks-container,
 .document-block.active .block-content,
 .brandbook-block.active .block-content {
   max-height: 2000px;
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 0 1.5rem 0;
 }
 
 /* Анимация стрелочки */
@@ -185,8 +193,8 @@ body {
 /* Списки заданий */
 .tasks-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0 1.5rem;
+  margin: 1rem 0 0 0;
 }
 
 .task-item {
@@ -202,11 +210,13 @@ body {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
   color: var(--primary-color);
+  padding-left: 10px;
 }
 
 .task-description {
   margin: 0 0 1rem 0;
   color: var(--text-color);
+  padding-left: 10px;
 }
 
 /* Кнопки */
@@ -215,7 +225,7 @@ body {
 .brandbook-link {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 0 10px;
   text-align: center;
   border-radius: 6px;
   text-decoration: none;
@@ -264,19 +274,23 @@ body {
   .project-title {
     font-size: 1.8rem;
   }
-}
-
-@media (max-width: 768px) {
+  
   .block-header {
     padding: 1rem;
   }
-  
+}
+
+@media (max-width: 768px) {
   .block-title {
     font-size: 1.1rem;
   }
   
   .project-title {
     font-size: 1.5rem;
+  }
+  
+  .module-description {
+    padding: 0 1rem 1rem;
   }
 }
 
@@ -294,5 +308,11 @@ body {
   .brandbook-link {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
+    display: block;
+    margin-left: 0;
+  }
+  
+  .tasks-list {
+    padding: 0 1rem;
   }
 }
