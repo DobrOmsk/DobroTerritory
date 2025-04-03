@@ -260,3 +260,26 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Добавьте это в конец файла style.css */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.project-title {
+  margin: 0.5rem 0;
+  color: var(--primary-color);
+}
+
+.project-description {
+  margin: 1rem auto;
+  max-width: 800px;
+}
