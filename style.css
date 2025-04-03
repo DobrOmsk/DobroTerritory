@@ -67,30 +67,66 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Блоки */
+/* Шапка сайта */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+.project-title {
+  margin: 0.5rem 0;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.project-description {
+  margin: 1rem auto;
+  max-width: 800px;
+  color: var(--text-color);
+}
+
+/* Блоки модулей */
 .section-title {
   text-align: center;
-  margin: 3rem 0 2rem;
-  font-size: 2rem;
+  margin: 2rem 0;
+  font-size: 1.8rem;
   color: var(--primary-color);
 }
 
-.module .block-content,
-.document-block .block-content,
-.brandbook-block .block-content {
-  max-height: 0;
+.modules-container,
+.documents-container,
+.brandbook-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Общие стили для всех блоков */
+.module,
+.document-block,
+.brandbook-block {
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  padding: 0 1.5rem;
+  transition: var(--transition);
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
 }
 
-.module.active .block-content,
-.document-block.active .block-content,
-.brandbook-block.active .block-content {
-  max-height: 1000px;
-  padding: 0 1.5rem 1.5rem;
+/* Цветные верхние границы */
+.module {
+  border-top: 5px solid var(--primary-color);
 }
-
 
 .document-block {
   border-top: 5px solid var(--documents-color);
@@ -100,49 +136,91 @@ body {
   border-top: 5px solid var(--brandbook-color);
 }
 
+/* Заголовки блоков */
 .block-header {
   padding: 1.5rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--white);
 }
 
 .block-title {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--text-color);
 }
 
 .block-icon {
   font-size: 1.2rem;
   transition: var(--transition);
+  color: var(--text-color);
 }
 
-
-
-.block-content-inner {
-  padding: 0 0 1.5rem;
+/* Содержимое блоков */
+.module .block-content,
+.document-block .block-content,
+.brandbook-block .block-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: all 0.3s ease-out;
 }
 
+.module.active .block-content,
+.document-block.active .block-content,
+.brandbook-block.active .block-content {
+  max-height: 2000px;
+  padding: 0 1.5rem 1.5rem;
+}
 
-
-.active .block-icon {
+/* Анимация стрелочки */
+.module.active .block-icon,
+.document-block.active .block-icon,
+.brandbook-block.active .block-icon {
   transform: rotate(180deg);
+}
+
+/* Списки заданий */
+.tasks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.task-description {
+  margin: 0 0 1rem 0;
+  color: var(--text-color);
 }
 
 /* Кнопки */
 .task-link,
 .document-link,
 .brandbook-link {
-  display: block;
-  padding: 0.8rem;
-  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
   text-align: center;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
-  color: var(--text-color);
 }
 
 .task-link {
@@ -153,6 +231,7 @@ body {
 .document-link,
 .brandbook-link {
   background-color: var(--documents-color);
+  color: var(--text-color);
 }
 
 .task-link:hover,
@@ -182,10 +261,22 @@ body {
     margin: 0.5rem 1rem;
   }
   
-  .modules-container,
-  .documents-container,
-  .brandbook-container {
-    grid-template-columns: 1fr;
+  .project-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .block-header {
+    padding: 1rem;
+  }
+  
+  .block-title {
+    font-size: 1.1rem;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
   }
 }
 
@@ -194,92 +285,14 @@ body {
     padding: 1rem;
   }
   
-  .block-header {
-    padding: 1rem;
+  .project-title {
+    font-size: 1.3rem;
   }
-}
-
-
-/* Исправления для работы скрипта */
-.module .block-content,
-.document-block .block-content,
-.brandbook-block .block-content {
-  display: none;
-}
-
-.module.active .block-content,
-.document-block.active .block-content,
-.brandbook-block.active .block-content {
-  display: block;
-  animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Убедитесь что контейнеры имеют правильную структуру */
-.modules-container,
-.documents-container,
-.brandbook-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-@media (min-width: 992px) {
-  .modules-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  
+  .task-link,
+  .document-link,
+  .brandbook-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
-}
-
-/* Гарантированная работа скрипта */
-.module .block-content,
-.document-block .block-content,
-.brandbook-block .block-content {
-  display: none;
-}
-
-.module.active .block-content,
-.document-block.active .block-content,
-.brandbook-block.active .block-content {
-  display: block;
-  animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Фикс для GitHub Pages */
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Добавьте это в конец файла style.css */
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.logo {
-  max-width: 200px;
-  height: auto;
-  margin: 0 auto 1rem;
-  display: block;
-}
-
-.project-title {
-  margin: 0.5rem 0;
-  color: var(--primary-color);
-}
-
-.project-description {
-  margin: 1rem auto;
-  max-width: 800px;
 }
