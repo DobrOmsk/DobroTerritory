@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (menuButton && navMenu) {
     menuButton.addEventListener('click', function(e) {
+      e.preventDefault();
       e.stopPropagation();
       navMenu.classList.toggle('active');
     });
@@ -12,23 +13,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Закрытие меню при клике вне его
   document.addEventListener('click', function() {
-    navMenu.classList.remove('active');
+    if (navMenu) navMenu.classList.remove('active');
   });
 
-  // Раскрывающиеся блоки
-  document.querySelectorAll('.block-header').forEach(header => {
-    header.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const block = this.closest('.module, .document-block, .brandbook-block');
-      const container = block.parentElement;
-      
-      // Закрываем другие блоки
-      container.querySelectorAll('.module, .document-block, .brandbook-block').forEach(b => {
-        if (b !== block) b.classList.remove('active');
+  // Раскрывающиеся блоки - инициализация
+  document.querySelectorAll('.module, .document-block, .brandbook-block').forEach(block => {
+    // Закрываем все блоки при загрузке
+    block.classList.remove('active');
+    
+    // Назначаем обработчик клика
+    const header = block.querySelector('.block-header');
+    if (header) {
+      header.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Закрываем все другие блоки
+        document.querySelectorAll('.module, .document-block, .brandbook-block').forEach(b => {
+          if (b !== block) b.classList.remove('active');
+        });
+        
+        // Переключаем текущий блок
+        block.classList.toggle('active');
       });
-      
-      // Переключаем текущий блок
-      block.classList.toggle('active');
-    });
+    }
   });
 });
