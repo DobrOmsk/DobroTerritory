@@ -75,29 +75,22 @@ body {
   color: var(--primary-color);
 }
 
-.modules-container,
-.documents-container,
-.brandbook-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.module,
-.document-block,
-.brandbook-block {
-  background: var(--white);
-  border-radius: 15px;
-  box-shadow: var(--shadow);
+.module .block-content,
+.document-block .block-content,
+.brandbook-block .block-content {
+  max-height: 0;
   overflow: hidden;
-  transition: var(--transition);
-  min-height: 80px;
+  transition: max-height 0.3s ease-out;
+  padding: 0 1.5rem;
 }
 
-.module {
-  border-top: 5px solid var(--primary-color);
+.module.active .block-content,
+.document-block.active .block-content,
+.brandbook-block.active .block-content {
+  max-height: 1000px;
+  padding: 0 1.5rem 1.5rem;
 }
+
 
 .document-block {
   border-top: 5px solid var(--documents-color);
@@ -125,20 +118,13 @@ body {
   transition: var(--transition);
 }
 
-.block-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  padding: 0 1.5rem;
-}
+
 
 .block-content-inner {
   padding: 0 0 1.5rem;
 }
 
-.active .block-content {
-  max-height: 1000px;
-}
+
 
 .active .block-icon {
   transform: rotate(180deg);
