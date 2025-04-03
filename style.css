@@ -316,3 +316,42 @@ body {
     padding: 0 1rem;
   }
 }
+
+/* Добавьте эти стили в конец файла */
+
+/* Анимация при наведении для всех блоков */
+.module:hover .tasks-container,
+.document-block:hover .block-content,
+.brandbook-block:hover .block-content {
+  max-height: 2000px;
+  padding-bottom: 1.5rem;
+}
+
+.module:hover .block-icon,
+.document-block:hover .block-icon,
+.brandbook-block:hover .block-icon {
+  transform: rotate(180deg);
+}
+
+/* Для мобильных устройств оставляем клик */
+@media (hover: none) {
+  .module .tasks-container,
+  .document-block .block-content,
+  .brandbook-block .block-content {
+    max-height: 0;
+    padding-bottom: 0;
+  }
+  
+  .module.active .tasks-container,
+  .document-block.active .block-content,
+  .brandbook-block.active .block-content {
+    max-height: 2000px;
+    padding-bottom: 1.5rem;
+  }
+  
+  .module.active .block-icon,
+  .document-block.active .block-icon,
+  .brandbook-block.active .block-icon {
+    transform: rotate(180deg);
+  }
+}
