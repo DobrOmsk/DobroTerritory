@@ -125,18 +125,11 @@ body {
   background: var(--white);
   border-radius: 15px;
   box-shadow: var(--shadow);
-  overflow: visible;
+  overflow: hidden;
   border: 1px solid #eaeaea;
   min-height: 200px;
   position: relative;
-}
-
-/* Обертки контента */
-.module-content-wrapper,
-.document-content-wrapper,
-.brandbook-content-wrapper {
-  position: relative;
-  height: 100%;
+  transition: border-radius 0.3s ease;
 }
 
 /* Цветные верхние границы */
@@ -150,6 +143,16 @@ body {
 
 .brandbook-block {
   border-top: 5px solid var(--brandbook-color);
+}
+
+/* Изменение скругления при наведении */
+.module:hover,
+.module.active,
+.document-block:hover,
+.document-block.active,
+.brandbook-block:hover,
+.brandbook-block.active {
+  border-radius: 15px 15px 0 0;
 }
 
 /* Заголовки блоков */
@@ -186,20 +189,22 @@ body {
 .tasks-container,
 .documents-content,
 .brandbook-content {
-  position: absolute;
-  left: -1px;
-  right: -1px;
-  top: 100%;
-  background: #f9f9f9;
-  z-index: 10;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  transform: translateY(-10px);
-  border-radius: 0 0 15px 15px;
-  border: 1px solid #ddd;
-  border-top: none;
+  background: var(--white);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Раскрытое состояние */
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content,
+.module.active .tasks-container,
+.document-block.active .documents-content,
+.brandbook-block.active .brandbook-content {
+  max-height: 1000px;
+  padding: 0 1.5rem 1.5rem;
 }
 
 /* Списки внутри блоков */
@@ -224,18 +229,6 @@ body {
   border-bottom: none;
 }
 
-/* Раскрытое состояние */
-.module:hover .tasks-container,
-.document-block:hover .documents-content,
-.brandbook-block:hover .brandbook-content,
-.module.active .tasks-container,
-.document-block.active .documents-content,
-.brandbook-block.active .brandbook-content {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
 /* Кнопки */
 .task-link,
 .document-link,
@@ -251,7 +244,7 @@ body {
 }
 
 .task-link {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
 }
 
@@ -304,27 +297,11 @@ body {
     padding: 1rem;
   }
   
-  /* Мобильные стили для раскрывающихся блоков */
-  .tasks-container,
-  .documents-content,
-  .brandbook-content {
-    position: static;
-    box-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    border-radius: 0;
-    border: none;
-    margin-top: 0;
-  }
-  
-  .module.active .tasks-container,
-  .document-block.active .documents-content,
-  .brandbook-block.active .brandbook-content {
-    max-height: 1000px;
+  /* Отключаем изменение скругления на мобильных */
+  .module,
+  .document-block,
+  .brandbook-block {
+    border-radius: 15px !important;
   }
 }
 
@@ -369,40 +346,3 @@ body {
     padding: 0 1rem;
   }
 }
-
-/* Добавьте эти стили в конец файла */
-
-.module,
-.document-block,
-.brandbook-block {
-  border-radius: 15px 15px 0 0 !important; /* Только скругление сверху */
-  margin-bottom: 0 !important; /* Убираем отступ снизу */
-}
-
-.tasks-container,
-.documents-content,
-.brandbook-content {
-  border-radius: 0 0 15px 15px !important; /* Скругление только снизу */
-  margin-top: -1px !important; /* Перекрываем границу основного блока */
-  border-top: none !important;
-  box-shadow: none !important; /* Убираем тень у раскрывающейся части */
-}
-
-/* Для мобильных устройств оставляем стандартное поведение */
-@media (max-width: 991px) {
-  .module,
-  .document-block,
-  .brandbook-block {
-    border-radius: 15px !important;
-    margin-bottom: 15px !important;
-  }
-  
-  .tasks-container,
-  .documents-content,
-  .brandbook-content {
-    margin-top: 0 !important;
-    border-top: 1px solid #eee !important;
-  }
-}
-
-
