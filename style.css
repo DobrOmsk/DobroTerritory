@@ -508,3 +508,56 @@ body {
     max-height: 1000px;
   }
 }
+
+
+/* Фикс для dropdown */
+.module,
+.document-block,
+.brandbook-block {
+  position: relative;
+}
+
+.module-content-wrapper,
+.document-content-wrapper,
+.brandbook-content-wrapper {
+  position: static;
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 100;
+  background: var(--white);
+  border: 1px solid #eaeaea;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin-top: -1px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Мобильная версия */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: none;
+    margin-top: 0;
+  }
+}
