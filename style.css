@@ -147,7 +147,6 @@ body {
 
 /* Изменение скругления при наведении */
 .module:hover,
-.module.active,
 .document-block:hover,
 .document-block.active,
 .brandbook-block:hover,
@@ -185,16 +184,17 @@ body {
   color: var(--text-color);
 }
 
-/* Скрываемый контент */
+/* Фикс для выпадающего контента */
 .tasks-container,
 .documents-content,
 .brandbook-content {
   background: var(--white);
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3s ease-out;
+  transition: none; /* Убираем анимацию */
   border-top: 1px solid #f0f0f0;
 }
+
 
 /* Раскрытое состояние */
 .module:hover .tasks-container,
@@ -203,8 +203,9 @@ body {
 .module.active .tasks-container,
 .document-block.active .documents-content,
 .brandbook-block.active .brandbook-content {
-  max-height: 1000px;
-  padding: 0 1.5rem 1.5rem;
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem;
+    border-radius: 15px 15px 15px 15px; /* Скругление только снизу */
 }
 
 /* Списки внутри блоков */
@@ -301,9 +302,14 @@ body {
   .module,
   .document-block,
   .brandbook-block {
-    border-radius: 15px !important;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid #eaeaea;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
   }
-}
 
 @media (max-width: 768px) {
   .block-title {
