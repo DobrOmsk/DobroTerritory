@@ -30,6 +30,7 @@ body {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   padding: 1rem 2rem;
   box-shadow: var(--shadow);
+  position: relative;
 }
 
 .menu-button {
@@ -70,14 +71,14 @@ body {
 /* Шапка сайта */
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   padding-top: 1rem;
 }
 
 .logo {
   width: 150px;
   height: auto;
-  margin: 0 auto 10px;
+  margin: 0 auto 1rem;
   display: block;
 }
 
@@ -94,7 +95,22 @@ body {
   padding: 0 20px;
 }
 
-/* Блоки модулей */
+/* Сетка модулей */
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+/* Сетка документов и брендбука */
+.documents-brandbook-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
 .section-title {
   text-align: center;
   margin: 2rem 0;
@@ -102,16 +118,7 @@ body {
   color: var(--primary-color);
 }
 
-.modules-container,
-.documents-container,
-.brandbook-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-/* Общие стили для всех блоков */
+/* Общие стили блоков */
 .module,
 .document-block,
 .brandbook-block {
@@ -120,8 +127,8 @@ body {
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: var(--transition);
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #eaeaea;
+  min-height: 200px;
 }
 
 /* Цветные верхние границы */
@@ -144,79 +151,73 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--white);
 }
 
 .block-title {
   margin: 0;
   font-size: 1.3rem;
   color: var(--text-color);
-  padding-left: 15px;
 }
 
 .block-icon {
   font-size: 1.2rem;
   transition: var(--transition);
   color: var(--text-color);
-  margin-right: 15px;
 }
 
-/* Основное описание модуля (видимое всегда) */
-.module-description {
+/* Основное описание (видимое всегда) */
+.module-description,
+.document-description,
+.brandbook-description {
   padding: 0 1.5rem 1.5rem;
-  color: var(--text-color);
   margin: 0;
+  color: var(--text-color);
 }
 
-/* Содержимое блоков (скрытое по умолчанию) */
-.tasks-container {
+/* Скрываемый контент */
+.tasks-container,
+.documents-content,
+.brandbook-content {
   max-height: 0;
   overflow: hidden;
   transition: all 0.3s ease-out;
   background-color: #f9f9f9;
 }
 
-.module.active .tasks-container,
-.document-block.active .block-content,
-.brandbook-block.active .block-content {
-  max-height: 2000px;
-  padding: 0 0 1.5rem 0;
-}
-
-/* Анимация стрелочки */
-.module.active .block-icon,
-.document-block.active .block-icon,
-.brandbook-block.active .block-icon {
-  transform: rotate(180deg);
-}
-
-/* Списки заданий */
-.tasks-list {
+/* Списки внутри блоков */
+.tasks-list,
+.documents-list,
+.brandbook-list {
   list-style: none;
   padding: 0 1.5rem;
-  margin: 1rem 0 0 0;
+  margin: 0;
 }
 
-.task-item {
+.tasks-list li,
+.documents-list li,
+.brandbook-list li {
   padding: 1rem 0;
   border-bottom: 1px solid #eee;
 }
 
-.task-item:last-child {
+.tasks-list li:last-child,
+.documents-list li:last-child,
+.brandbook-list li:last-child {
   border-bottom: none;
 }
 
-.task-title {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-  color: var(--primary-color);
-  padding-left: 10px;
+/* Анимация при наведении */
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content {
+  max-height: 1000px;
+  padding: 0 1.5rem 1.5rem;
 }
 
-.task-description {
-  margin: 0 0 1rem 0;
-  color: var(--text-color);
-  padding-left: 10px;
+.module:hover .block-icon,
+.document-block:hover .block-icon,
+.brandbook-block:hover .block-icon {
+  transform: rotate(180deg);
 }
 
 /* Кнопки */
@@ -225,7 +226,7 @@ body {
 .brandbook-link {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  margin: 0.5rem 0 0 10px;
+  margin-top: 0.8rem;
   text-align: center;
   border-radius: 6px;
   text-decoration: none;
@@ -251,7 +252,7 @@ body {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Адаптивность */
+/* Стили для мобильных устройств */
 @media (max-width: 991px) {
   .menu-button {
     display: block;
@@ -269,6 +270,14 @@ body {
   
   .nav-item {
     margin: 0.5rem 1rem;
+  }
+  
+  .modules-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .documents-brandbook-container {
+    grid-template-columns: 1fr;
   }
   
   .project-title {
@@ -289,8 +298,11 @@ body {
     font-size: 1.5rem;
   }
   
-  .module-description {
+  .module-description,
+  .document-description,
+  .brandbook-description {
     padding: 0 1rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -309,49 +321,35 @@ body {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     display: block;
-    margin-left: 0;
+    text-align: center;
   }
   
-  .tasks-list {
+  .tasks-list,
+  .documents-list,
+  .brandbook-list {
     padding: 0 1rem;
   }
 }
 
-/* Добавьте эти стили в конец файла */
-
-/* Анимация при наведении для всех блоков */
-.module:hover .tasks-container,
-.document-block:hover .block-content,
-.brandbook-block:hover .block-content {
-  max-height: 2000px;
-  padding-bottom: 1.5rem;
-}
-
-.module:hover .block-icon,
-.document-block:hover .block-icon,
-.brandbook-block:hover .block-icon {
-  transform: rotate(180deg);
-}
-
-/* Для мобильных устройств оставляем клик */
+/* Стили для мобильных устройств (активация по клику) */
 @media (hover: none) {
   .module .tasks-container,
-  .document-block .block-content,
-  .brandbook-block .block-content {
-    max-height: 0;
-    padding-bottom: 0;
+  .document-block .documents-content,
+  .brandbook-block .brandbook-content {
+    max-height: 0 !important;
+    padding: 0 !important;
   }
   
   .module.active .tasks-container,
-  .document-block.active .block-content,
-  .brandbook-block.active .block-content {
-    max-height: 2000px;
-    padding-bottom: 1.5rem;
+  .document-block.active .documents-content,
+  .brandbook-block.active .brandbook-content {
+    max-height: 1000px !important;
+    padding: 0 1.5rem 1.5rem !important;
   }
   
   .module.active .block-icon,
   .document-block.active .block-icon,
   .brandbook-block.active .block-icon {
-    transform: rotate(180deg);
+    transform: rotate(180deg) !important;
   }
 }
