@@ -459,31 +459,52 @@ body {
 .module,
 .document-block,
 .brandbook-block {
-  overflow: visible; /* Разрешаем выход содержимого за границы */
-  transform: translateZ(0); /* Создаем новый слой для изоляции */
+  position: relative;
+  overflow: visible;
 }
 
 .tasks-container,
 .documents-content,
 .brandbook-content {
   position: absolute;
-  left: -1px;
-  right: -1px;
+  left: 0;
+  right: 0;
   top: 100%;
-  z-index: 10;
   background: var(--white);
   border: 1px solid #eaeaea;
   border-top: none;
-  margin-top: -1px;
-  box-shadow: none; /* Убираем тень, чтобы не влияла на соседние блоки */
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
 
-/* Для мобильных устройств */
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Мобильная версия (прежнее поведение) */
 @media (max-width: 991px) {
   .tasks-container,
   .documents-content,
   .brandbook-content {
     position: static;
-    margin-top: 0;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .module.active .tasks-container,
+  .document-block.active .documents-content,
+  .brandbook-block.active .brandbook-content {
+    max-height: 1000px;
   }
 }
