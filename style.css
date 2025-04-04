@@ -352,3 +352,32 @@ body {
     padding: 0 1rem;
   }
 }
+
+/* Добавьте этот блок в конец вашего CSS файла */
+.module,
+.document-block,
+.brandbook-block {
+  position: relative; /* Добавляем относительное позиционирование */
+  z-index: 1; /* Устанавливаем базовый z-index */
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute; /* Абсолютное позиционирование для выпадающего контента */
+  left: 0;
+  right: 0;
+  top: 100%; /* Позиционируем сразу под блоком */
+  z-index: 2; /* Выше основного блока */
+  margin-top: -1px; /* Перекрываем границу */
+}
+
+/* Для мобильных устройств оставляем как было */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    margin-top: 0;
+  }
+}
