@@ -405,74 +405,70 @@ body {
   }
 }
 
+/* Основной блок модуля */
 .module {
-  border-radius: 15px; /* Скругление по умолчанию */
-  transition: border-radius 0.2s ease; /* Плавное изменение скругления */
+  border-radius: 15px;
   border: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea; /* Сохраняем границу */
+  border-top: 5px solid var(--primary-color); /* Фиолетовая рамка сверху */
+  transition: border-radius 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
-/* При раскрытии */
-.module:hover,
+/* Состояние при наведении/раскрытии */
+.module:hover, 
 .module.active {
-  border-radius: 15px 15px 0 0; /* Скругление только сверху */
-  border-bottom: none; /* Убираем нижнюю границу */
+  border-radius: 15px 15px 0 0;
+  border-bottom: 1px solid transparent; /* Прозрачная граница для плавного перехода */
 }
 
 /* Выпадающий блок */
 .tasks-container {
-  background: var(--white) !important; /* Фон как у основного блока */
+  background: var(--white);
   border: 1px solid #eaeaea;
-  border-top: none !important;
+  border-top: none;
   border-radius: 0 0 15px 15px;
-  margin-top: -1px; /* Перекрываем границу */
+  margin-top: -1px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Восстановление скругления, когда неактивно */
+.module:not(:hover):not(.active) {
+  border-radius: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Для документов (желтые) */
+.document-block {
+  border-top: 5px solid var(--documents-color);
+}
+
+/* Для брендбука (желтые) */
+.brandbook-block {
+  border-top: 5px solid var(--brandbook-color);
 }
 
 /* Кнопки в выпадающем меню */
 .tasks-container .task-link {
-  background-color: var(--primary-color) !important; /* Фиолетовый как рамка */
-  color: white !important;
-}
-
-/* Для документов (желтые) */
-.document-block:hover,
-.document-block.active {
-  border-radius: 15px 15px 0 0;
-  border-bottom: none;
-}
-
-.documents-content {
-  background: var(--white) !important;
-  border: 1px solid #eaeaea;
-  border-top: none !important;
-}
-
-/* Для брендбука (желтые) */
-.brandbook-block:hover,
-.brandbook-block.active {
-  border-radius: 15px 15px 0 0;
-  border-bottom: none;
-}
-
-.brandbook-content {
-  background: var(--white) !important;
-  border: 1px solid #eaeaea;
-  border-top: none !important;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 /* Мобильная версия */
 @media (max-width: 991px) {
-  .module,
-  .document-block,
-  .brandbook-block {
+  .module {
     border-radius: 15px !important;
     border-bottom: 1px solid #eaeaea !important;
   }
   
-  .tasks-container,
-  .documents-content,
-  .brandbook-content {
-    margin-top: 0 !important;
-    border-top: 1px solid #eee !important;
+  .tasks-container {
+    margin-top: 0;
+    border-top: 1px solid #eee;
+  }
+  
+  .module.active {
+    border-radius: 15px !important;
+    border-bottom: 1px solid #eaeaea !important;
   }
 }
