@@ -16,32 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navMenu) navMenu.classList.remove('active');
   });
 
-  // Проверка типа устройства (для мобильных оставляем клик)
-  const isTouchDevice = () => {
-    return (('ontouchstart' in window) ||
-      (navigator.maxTouchPoints > 0) ||
-      (navigator.msMaxTouchPoints > 0));
-  };
-
-  // Обработка блоков только для мобильных устройств
-  if (isTouchDevice()) {
+  // Для мобильных устройств - обработка кликов по блокам
+  if ('ontouchstart' in window || navigator.maxTouchPoints) {
     document.querySelectorAll('.module, .document-block, .brandbook-block').forEach(block => {
-      // Закрываем все блоки при загрузке
-      block.classList.remove('active');
-      
-      // Назначаем обработчик клика
       const header = block.querySelector('.block-header');
       if (header) {
         header.addEventListener('click', function(e) {
-          e.preventDefault();
           e.stopPropagation();
-          
-          // Закрываем все другие блоки
+          // Закрываем другие блоки
           document.querySelectorAll('.module, .document-block, .brandbook-block').forEach(b => {
             if (b !== block) b.classList.remove('active');
           });
-          
-          // Переключаем текущий блок
+          // Переключаем текущий
           block.classList.toggle('active');
         });
       }
