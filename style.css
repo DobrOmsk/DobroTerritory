@@ -369,3 +369,38 @@ body {
     padding: 0 1rem;
   }
 }
+
+/* Добавьте эти стили в конец файла */
+
+.module,
+.document-block,
+.brandbook-block {
+  border-radius: 15px 15px 0 0 !important; /* Только скругление сверху */
+  margin-bottom: 0 !important; /* Убираем отступ снизу */
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  border-radius: 0 0 15px 15px !important; /* Скругление только снизу */
+  margin-top: -1px !important; /* Перекрываем границу основного блока */
+  border-top: none !important;
+  box-shadow: none !important; /* Убираем тень у раскрывающейся части */
+}
+
+/* Для мобильных устройств оставляем стандартное поведение */
+@media (max-width: 991px) {
+  .module,
+  .document-block,
+  .brandbook-block {
+    border-radius: 15px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    margin-top: 0 !important;
+    border-top: 1px solid #eee !important;
+  }
+}
