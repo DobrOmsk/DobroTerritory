@@ -381,3 +381,36 @@ body {
     margin-top: 0;
   }
 }
+
+  /* Добавьте в конец CSS */
+.module,
+.document-block,
+.brandbook-block {
+  position: static; /* Сброс позиционирования */
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  z-index: 10;
+  box-shadow: var(--shadow);
+  border-radius: 0 0 15px 15px;
+  border: 1px solid #eaeaea;
+  border-top: none;
+  margin-top: -1px;
+}
+
+/* Для мобильных - обычное поведение */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    margin-top: 0;
+    box-shadow: none;
+  }
+}
