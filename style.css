@@ -404,3 +404,75 @@ body {
     border-top: 1px solid #eee !important;
   }
 }
+
+.module {
+  border-radius: 15px; /* Скругление по умолчанию */
+  transition: border-radius 0.2s ease; /* Плавное изменение скругления */
+  border: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea; /* Сохраняем границу */
+}
+
+/* При раскрытии */
+.module:hover,
+.module.active {
+  border-radius: 15px 15px 0 0; /* Скругление только сверху */
+  border-bottom: none; /* Убираем нижнюю границу */
+}
+
+/* Выпадающий блок */
+.tasks-container {
+  background: var(--white) !important; /* Фон как у основного блока */
+  border: 1px solid #eaeaea;
+  border-top: none !important;
+  border-radius: 0 0 15px 15px;
+  margin-top: -1px; /* Перекрываем границу */
+}
+
+/* Кнопки в выпадающем меню */
+.tasks-container .task-link {
+  background-color: var(--primary-color) !important; /* Фиолетовый как рамка */
+  color: white !important;
+}
+
+/* Для документов (желтые) */
+.document-block:hover,
+.document-block.active {
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+.documents-content {
+  background: var(--white) !important;
+  border: 1px solid #eaeaea;
+  border-top: none !important;
+}
+
+/* Для брендбука (желтые) */
+.brandbook-block:hover,
+.brandbook-block.active {
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+.brandbook-content {
+  background: var(--white) !important;
+  border: 1px solid #eaeaea;
+  border-top: none !important;
+}
+
+/* Мобильная версия */
+@media (max-width: 991px) {
+  .module,
+  .document-block,
+  .brandbook-block {
+    border-radius: 15px !important;
+    border-bottom: 1px solid #eaeaea !important;
+  }
+  
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    margin-top: 0 !important;
+    border-top: 1px solid #eee !important;
+  }
+}
