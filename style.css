@@ -454,3 +454,36 @@ body {
     box-shadow: none;
   }
 }
+
+/* Добавьте в конец CSS */
+.module,
+.document-block,
+.brandbook-block {
+  overflow: visible; /* Разрешаем выход содержимого за границы */
+  transform: translateZ(0); /* Создаем новый слой для изоляции */
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 100%;
+  z-index: 10;
+  background: var(--white);
+  border: 1px solid #eaeaea;
+  border-top: none;
+  margin-top: -1px;
+  box-shadow: none; /* Убираем тень, чтобы не влияла на соседние блоки */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    margin-top: 0;
+  }
+}
