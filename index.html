@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Добрая территория</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  <!-- Стандартная иконка -->
   <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -29,9 +29,7 @@
   <div class="container">
     <header class="header">
       <img src="logo.png" alt="Добрая территория" class="logo">
-      
       <h1 class="project-title">Добрая территория</h1>
-      
       <p class="project-description">
         Уважаемые руководители! Приветствуем вас на страницах проекта "Добрая Территория". 
         Здесь размещены методические материалы, которые помогут вам организовать и провести 
@@ -39,6 +37,7 @@
       </p>
     </header>
     
+    <!-- Модули в одну строку -->
     <div class="modules-container">
       <!-- Модуль 1 -->
       <div class="module" id="module1">
@@ -46,11 +45,9 @@
           <h2 class="block-title">Модуль 1: Добровольчество, как приключение</h2>
           <i class="fas fa-chevron-down block-icon"></i>
         </div>
-        
         <p class="module-description">
           В этом модуле вы найдете все необходимые материалы для подготовки к реализации проекта.
         </p>
-        
         <div class="tasks-container">
           <ul class="tasks-list">
             <li class="task-item">
@@ -58,13 +55,11 @@
               <p class="task-description">Составление плана мероприятий и графика реализации</p>
               <a href="module1/task1.html" class="task-link">Перейти к заданию</a>
             </li>
-            
             <li class="task-item">
               <h3 class="task-title">Задание 1.2: Ресурсы</h3>
               <p class="task-description">Определение необходимых ресурсов и материалов</p>
               <a href="module1/task2.html" class="task-link">Перейти к заданию</a>
             </li>
-            
             <li class="task-item">
               <h3 class="task-title">Задание 1.3: Команда</h3>
               <p class="task-description">Формирование рабочей группы и распределение ролей</p>
@@ -81,20 +76,18 @@
           <i class="fas fa-chevron-down block-icon"></i>
         </div>
         <p class="module-description">Практические материалы для непосредственной работы с участниками проекта.</p>
-        <div class="tasks-container">         
+        <div class="tasks-container">
           <ul class="tasks-list">
             <li class="task-item">
               <h3 class="task-title">Задание 2.1: Запуск</h3>
               <p class="task-description">Проведение стартового мероприятия</p>
               <a href="module2/task1.html" class="task-link">Перейти к заданию</a>
             </li>
-            
             <li class="task-item">
               <h3 class="task-title">Задание 2.2: Вовлечение</h3>
               <p class="task-description">Методики вовлечения участников</p>
               <a href="module2/task2.html" class="task-link">Перейти к заданию</a>
             </li>
-            
             <li class="task-item">
               <h3 class="task-title">Задание 2.3: Мониторинг</h3>
               <p class="task-description">Система отслеживания прогресса</p>
@@ -108,11 +101,11 @@
       <div class="module" id="module3">
         <div class="block-header">
           <h2 class="block-title">Модуль 3: Мы команда</h2>
-          <i class="fas fa-chevron-down module-icon"></i>
+          <i class="fas fa-chevron-down block-icon"></i>
         </div>
         <p class="module-description">
-          Материалы для подведения итогов и анализа результатов проекта.</p>
-        
+          Материалы для подведения итогов и анализа результатов проекта.
+        </p>
         <div class="tasks-container">
           <ul class="tasks-list">
             <li class="task-item">
@@ -120,13 +113,11 @@
               <p class="task-description">Оценка достигнутых результатов</p>
               <a href="module3/task1.html" class="task-link">Перейти к заданию</a>
             </li>
-            
             <li class="task-item">
               <h3 class="task-title">Задание 3.2: Отчетность</h3>
               <p class="task-description">Подготовка отчетных материалов</p>
               <a href="module3/task2.html" class="task-link">Перейти к заданию</a>
             </li>
-            
             <li class="task-item">
               <h3 class="task-title">Задание 3.3: Награждение</h3>
               <p class="task-description">Проведение итогового мероприятия</p>
@@ -137,50 +128,52 @@
       </div>
     </div>
 
-    <!-- Документы -->
-    <h2 class="section-title">Документы</h2>
-    <div class="documents-container">
+    <!-- Документы и брендбук в одну строку -->
+    <h2 class="section-title">Документы и брендбук</h2>
+    <div class="documents-brandbook-container">
+      <!-- Документы -->
       <div class="document-block">
         <div class="block-header">
           <h3 class="block-title">Нормативные документы</h3>
           <i class="fas fa-chevron-down block-icon"></i>
         </div>
-        <div class="block-content">
+        <p class="document-description">Официальные документы проекта</p>
+        <div class="documents-content">
           <ul class="documents-list">
             <li class="document-item">
               <h4 class="task-title">Положение о проекте</h4>
               <a href="#" class="document-link">Скачать PDF</a>
             </li>
-            <!-- Другие документы -->
+            <li class="document-item">
+              <h4 class="task-title">Методические рекомендации</h4>
+              <a href="#" class="document-link">Скачать PDF</a>
+            </li>
           </ul>
         </div>
       </div>
-      <!-- Другие блоки документов -->
-    </div>
-
-    <!-- Брендбук -->
-    <h2 class="section-title">Брендбук</h2>
-    <div class="brandbook-container">
+      
+      <!-- Брендбук -->
       <div class="brandbook-block">
         <div class="block-header">
           <h3 class="block-title">Фирменный стиль</h3>
           <i class="fas fa-chevron-down block-icon"></i>
         </div>
-        <div class="block-content">
+        <p class="brandbook-description">Материалы брендбука проекта</p>
+        <div class="brandbook-content">
           <ul class="brandbook-list">
             <li class="brandbook-item">
               <h4 class="task-title">Логотипы</h4>
               <a href="#" class="brandbook-link">Скачать материалы</a>
             </li>
-            <!-- Другие элементы брендбука -->
+            <li class="brandbook-item">
+              <h4 class="task-title">Фирменные цвета</h4>
+              <a href="#" class="brandbook-link">Скачать материалы</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-
-
-
-  
+  </div>
 
   <script src="script.js"></script>
 </body>
