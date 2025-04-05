@@ -1,135 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Добрая территория</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Навигация -->
   <nav class="navbar">
-    <button class="menu-button"><i class="fas fa-bars"></i></button>
+    <button class="menu-button">&#9776;</button>
     <ul class="nav-menu">
-      <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Модуль 1</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Модуль 2</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Модуль 3</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Документы</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Брендбук</a></li>
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="module1.html">Модуль 1</a></li>
+      <li><a href="module2.html">Модуль 2</a></li>
+      <li><a href="module3.html">Модуль 3</a></li>
+      <li><a href="documents.html">Документы</a></li>
+      <li><a href="brandbook.html">Брендбук</a></li>
     </ul>
   </nav>
 
   <div class="container">
-    <!-- Логотип и Заголовок -->
-    <div style="text-align: center; margin-top: 30px;">
-      <img src="logo.png" alt="Логотип проекта" style="max-width: 120px; margin-bottom: 10px;">
+    <header class="header">
+      <img src="logo.png" alt="Логотип" class="logo">
       <h1 class="project-title">Добрая территория</h1>
       <p class="project-description">
-        Уважаемые руководители! Приветствуем вас на страницах проекта "Добрая Территория". Здесь размещены методические материалы, которые помогут вам организовать и провести этот замечательный проект в вашем учреждении.
+        Уважаемые руководители! Приветствуем вас на страницах проекта "Добрая Территория".
+        Здесь размещены методические материалы, которые помогут вам организовать и провести
+        этот замечательный проект в вашем учреждении.
       </p>
-    </div>
+    </header>
 
-    <!-- Модули -->
-    <div class="modules-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
-      <!-- Модуль 1 -->
-      <div class="module">
+    <div class="modules-container">
+      <div class="block module" data-block>
         <div class="block-header">
-          <h2 class="block-title">Модуль 1: Добровольчество как приключение</h2>
-          <i class="fas fa-chevron-down block-icon"></i>
+          <h2 class="block-title">Модуль 1: Добровольчество, как приключение</h2>
+          <span class="block-icon">&#x25BC;</span>
         </div>
-        <div class="tasks-container">
-          <ul class="tasks-list">
-            <li><a class="task-link" href="#">Задание 1.1</a></li>
-            <li><a class="task-link" href="#">Задание 1.2</a></li>
+        <div class="block-content">
+          <p>Материалы для подготовки и планирования проекта.</p>
+          <ul>
+            <li><a class="task-link" href="module1/task1.html">Задание 1.1: Планирование</a></li>
+            <li><a class="task-link" href="module1/task2.html">Задание 1.2: Ресурсы</a></li>
+            <li><a class="task-link" href="module1/task3.html">Задание 1.3: Команда</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Модуль 2 -->
-      <div class="module">
+      <div class="block module" data-block>
         <div class="block-header">
           <h2 class="block-title">Модуль 2: Я могу!</h2>
-          <i class="fas fa-chevron-down block-icon"></i>
+          <span class="block-icon">&#x25BC;</span>
         </div>
-        <div class="tasks-container">
-          <ul class="tasks-list">
-            <li><a class="task-link" href="#">Задание 2.1</a></li>
-            <li><a class="task-link" href="#">Задание 2.2</a></li>
+        <div class="block-content">
+          <p>Практические материалы для непосредственной работы с участниками проекта.</p>
+          <ul>
+            <li><a class="task-link" href="module2/task1.html">Задание 2.1: Запуск</a></li>
+            <li><a class="task-link" href="module2/task2.html">Задание 2.2: Вовлечение</a></li>
+            <li><a class="task-link" href="module2/task3.html">Задание 2.3: Мониторинг</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Модуль 3 -->
-      <div class="module">
+      <div class="block module" data-block>
         <div class="block-header">
           <h2 class="block-title">Модуль 3: Мы команда</h2>
-          <i class="fas fa-chevron-down block-icon"></i>
+          <span class="block-icon">&#x25BC;</span>
         </div>
-        <div class="tasks-container">
-          <ul class="tasks-list">
-            <li><a class="task-link" href="#">Задание 3.1</a></li>
-            <li><a class="task-link" href="#">Задание 3.2</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Документы и Брендбук -->
-    <div class="documents-brandbook-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
-      <!-- Документы -->
-      <div class="document-block">
-        <div class="block-header">
-          <h2 class="block-title">Документы</h2>
-          <i class="fas fa-chevron-down block-icon"></i>
-        </div>
-        <div class="documents-content">
-          <ul class="documents-list">
-            <li><a class="document-link" href="#">Положение о проекте</a></li>
-            <li><a class="document-link" href="#">Методические рекомендации</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Брендбук -->
-      <div class="brandbook-block">
-        <div class="block-header">
-          <h2 class="block-title">Брендбук</h2>
-          <i class="fas fa-chevron-down block-icon"></i>
-        </div>
-        <div class="brandbook-content">
-          <ul class="brandbook-list">
-            <li><a class="brandbook-link" href="#">Логотипы</a></li>
-            <li><a class="brandbook-link" href="#">Фирменные цвета</a></li>
+        <div class="block-content">
+          <p>Материалы для подведения итогов и анализа результатов проекта.</p>
+          <ul>
+            <li><a class="task-link" href="module3/task1.html">Задание 3.1: Анализ</a></li>
+            <li><a class="task-link" href="module3/task2.html">Задание 3.2: Отчетность</a></li>
+            <li><a class="task-link" href="module3/task3.html">Задание 3.3: Награждение</a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    // Открытие/закрытие только одного блока за раз
-    document.querySelectorAll('.block-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const block = header.parentElement;
-        const isActive = block.classList.contains('active');
-
-        // Закрываем все
-        document.querySelectorAll('.module, .document-block, .brandbook-block').forEach(b => b.classList.remove('active'));
-
-        // Если был неактивен — активируем
-        if (!isActive) {
-          block.classList.add('active');
-        }
-      });
-    });
-
-    // Мобильное меню
-    document.querySelector('.menu-button').addEventListener('click', () => {
-      document.querySelector('.nav-menu').classList.toggle('active');
-    });
-  </script>
 </body>
 </html>
+
