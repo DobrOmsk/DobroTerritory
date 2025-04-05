@@ -145,14 +145,6 @@ body {
   border-top: 5px solid var(--brandbook-color);
 }
 
-/* Изменение скругления при наведении */
-.module:hover,
-.document-block:hover,
-.document-block.active,
-.brandbook-block:hover,
-.brandbook-block.active {
-  border-radius: 15px 15px 0 0;
-}
 
 /* Заголовки блоков */
 .block-header {
@@ -192,7 +184,6 @@ body {
   max-height: 0;
   overflow: hidden;
   transition: none; /* Убираем анимацию */
-  border-top: 1px solid #f0f0f0;
 }
 
 
@@ -205,7 +196,7 @@ body {
 .brandbook-block.active .brandbook-content {
     max-height: 1000px;
     padding: 0 1.5rem 1.5rem;
-    border-radius: 15px 15px 15px 15px; /* Скругление только снизу */
+    border-radius: 15px 15px 15px 15px; 
 }
 
 /* Списки внутри блоков */
@@ -481,12 +472,7 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.module:hover .tasks-container,
-.document-block:hover .documents-content,
-.brandbook-block:hover .brandbook-content {
-  opacity: 1;
-  pointer-events: auto;
-}
+
 
 /* Мобильная версия (прежнее поведение) */
 @media (max-width: 991px) {
