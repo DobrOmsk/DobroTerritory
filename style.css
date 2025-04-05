@@ -1,121 +1,563 @@
-/* Общие стили для всех блоков */
-.block {
-  cursor: pointer;
-  transition: all 0.3s ease;
+:root {
+  --primary-color: #61338b;
+  --secondary-color: #AB89CC;
+  --documents-color: #fdd14d;
+  --brandbook-color: #fdd14d;
+  --text-color: #2c3e50;
+  --light-gray: #f8fafc;
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-/* Стили для Модуля 1 */
-.module-1 {
-  background-color: #f3f3f3;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--light-gray);
 }
 
-.module-1 .block-header {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #4c4c4c;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.module-1.active {
-  background-color: #e1e1e1;
-  padding: 15px;
-  border: 1px solid #bbb;
+/* Навигационное меню */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
 }
 
-/* Стили для Модуля 2 */
-.module-2 {
-  background-color: #f7f7f7;
-  padding: 15px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-}
-
-.module-2 .block-header {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #4c4c4c;
-}
-
-.module-2.active {
-  background-color: #e1e1e1;
-  padding: 20px;
-  border: 1px solid #bbb;
-}
-
-/* Стили для Модуля 3 */
-.module-3 {
-  background-color: #f9f9f9;
-  padding: 20px;
-  margin-bottom: 10px;
-  border: 1px solid #bbb;
-}
-
-.module-3 .block-header {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #4c4c4c;
-}
-
-.module-3.active {
-  background-color: #e1e1e1;
-  padding: 25px;
-  border: 1px solid #aaa;
-}
-
-/* Стили для Документов */
-.document-block {
-  background-color: #f0f0f0;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-}
-
-.document-block .block-header {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.document-block.active {
-  background-color: #e6e6e6;
-  padding: 18px;
-  border: 1px solid #bbb;
-}
-
-/* Стили для Брендбука */
-.brandbook-block {
-  background-color: #f9f9f9;
-  padding: 16px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-}
-
-.brandbook-block .block-header {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.brandbook-block.active {
-  background-color: #e6e6e6;
-  padding: 22px;
-  border: 1px solid #bbb;
-}
-
-/* Дополнительные стили для кнопки меню и навигации */
 .menu-button {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
+  margin-right: auto;
 }
 
 .nav-menu {
-  display: none;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-menu.active {
+.nav-item {
+  margin: 0 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Шапка сайта */
+.header {
+  text-align: center;
+  margin: 2rem 0;
+  padding-top: 1rem;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin: 0 auto 1rem;
   display: block;
+}
+
+.project-title {
+  margin: 0.5rem 0;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.project-description {
+  margin: 1rem auto;
+  max-width: 800px;
+  color: var(--text-color);
+  padding: 0 20px;
+}
+
+/* Сетка модулей */
+.modules-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+/* Сетка документов и брендбука */
+.documents-brandbook-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+/* Общие стили блоков */
+.module,
+.document-block,
+.brandbook-block {
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  min-height: 200px;
+  position: relative;
+  transition: border-radius 0.3s ease;
+}
+
+/* Цветные верхние границы */
+.module {
+  border-top: 5px solid var(--primary-color);
+}
+
+.document-block {
+  border-top: 5px solid var(--documents-color);
+}
+
+.brandbook-block {
+  border-top: 5px solid var(--brandbook-color);
+}
+
+/* Изменение скругления при наведении */
+.module:hover,
+.document-block:hover,
+.document-block.active,
+.brandbook-block:hover,
+.brandbook-block.active {
+  border-radius: 15px 15px 0 0;
+}
+
+/* Заголовки блоков */
+.block-header {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.block-title {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--text-color);
+}
+
+.block-icon {
+  font-size: 1.2rem;
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+/* Основное описание (видимое всегда) */
+.module-description,
+.document-description,
+.brandbook-description {
+  padding: 0 1.5rem 1.5rem;
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* Фикс для выпадающего контента */
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  background: var(--white);
+  max-height: 0;
+  overflow: hidden;
+  transition: none; /* Убираем анимацию */
+  border-top: 1px solid #f0f0f0;
+}
+
+
+/* Раскрытое состояние */
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content,
+.module.active .tasks-container,
+.document-block.active .documents-content,
+.brandbook-block.active .brandbook-content {
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem;
+    border-radius: 15px 15px 15px 15px; /* Скругление только снизу */
+}
+
+/* Списки внутри блоков */
+.tasks-list,
+.documents-list,
+.brandbook-list {
+  list-style: none;
+  padding: 0 1.5rem;
+  margin: 0;
+}
+
+.tasks-list li,
+.documents-list li,
+.brandbook-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.tasks-list li:last-child,
+.documents-list li:last-child,
+.brandbook-list li:last-child {
+  border-bottom: none;
+}
+
+/* Кнопки */
+.task-link,
+.document-link,
+.brandbook-link {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.8rem;
+  text-align: center;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.task-link {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.document-link,
+.brandbook-link {
+  background-color: var(--documents-color);
+  color: var(--text-color);
+}
+
+.task-link:hover,
+.document-link:hover,
+.brandbook-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Мобильная версия */
+@media (max-width: 991px) {
+  .menu-button {
+    display: block;
+  }
+  
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  .nav-item {
+    margin: 0.5rem 1rem;
+  }
+  
+  .modules-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .documents-brandbook-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-title {
+    font-size: 1.8rem;
+  }
+  
+  .block-header {
+    padding: 1rem;
+  }
+  
+  /* Отключаем изменение скругления на мобильных */
+  .module,
+  .document-block,
+  .brandbook-block {
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid #eaeaea;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+@media (max-width: 768px) {
+  .block-title {
+    font-size: 1.1rem;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
+  
+  .module-description,
+  .document-description,
+  .brandbook-description {
+    padding: 0 1rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
+  
+  .task-link,
+  .document-link,
+  .brandbook-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    display: block;
+    text-align: center;
+  }
+  
+  .tasks-list,
+  .documents-list,
+  .brandbook-list {
+    padding: 0 1rem;
+  }
+}
+
+/* Добавьте этот блок в конец вашего CSS файла */
+.module,
+.document-block,
+.brandbook-block {
+  position: relative; /* Добавляем относительное позиционирование */
+  z-index: 1; /* Устанавливаем базовый z-index */
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute; /* Абсолютное позиционирование для выпадающего контента */
+  left: 0;
+  right: 0;
+  top: 100%; /* Позиционируем сразу под блоком */
+  z-index: 2; /* Выше основного блока */
+  margin-top: -1px; /* Перекрываем границу */
+}
+
+/* Для мобильных устройств оставляем как было */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    margin-top: 0;
+  }
+}
+
+  /* Добавьте в конец CSS */
+.module,
+.document-block,
+.brandbook-block {
+  position: static; /* Сброс позиционирования */
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  z-index: 10;
+  box-shadow: var(--shadow);
+  border-radius: 0 0 15px 15px;
+  border: 1px solid #eaeaea;
+  border-top: none;
+  margin-top: -1px;
+}
+
+/* Для мобильных - обычное поведение */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    margin-top: 0;
+    box-shadow: none;
+  }
+}
+
+
+
+/* Добавьте этот код в самый конец CSS */
+.modules-container,
+.documents-brandbook-container {
+  contain: layout; /* Предотвращает влияние соседних элементов */
+}
+
+.module-content-wrapper,
+.document-content-wrapper,
+.brandbook-content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - 1px);
+  z-index: 2;
+  background: var(--white);
+  border: 1px solid #eaeaea;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Мобильная версия */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+/* Добавьте в конец CSS */
+.module,
+.document-block,
+.brandbook-block {
+  position: relative;
+  overflow: visible;
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--white);
+  border: 1px solid #eaeaea;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Мобильная версия (прежнее поведение) */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .module.active .tasks-container,
+  .document-block.active .documents-content,
+  .brandbook-block.active .brandbook-content {
+    max-height: 1000px;
+  }
+}
+
+
+/* Фикс для dropdown */
+.module,
+.document-block,
+.brandbook-block {
+  position: relative;
+}
+
+.module-content-wrapper,
+.document-content-wrapper,
+.brandbook-content-wrapper {
+  position: static;
+}
+
+.tasks-container,
+.documents-content,
+.brandbook-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 100;
+  background: var(--white);
+  border: 1px solid #eaeaea;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin-top: -1px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.module:hover .tasks-container,
+.document-block:hover .documents-content,
+.brandbook-block:hover .brandbook-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Мобильная версия */
+@media (max-width: 991px) {
+  .tasks-container,
+  .documents-content,
+  .brandbook-content {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: none;
+    margin-top: 0;
+  }
 }
