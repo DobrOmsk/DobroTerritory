@@ -23,16 +23,17 @@
   </nav>
 
   <div class="container">
-    <!-- Заголовок -->
-    <header class="header">
+    <!-- Логотип и Заголовок -->
+    <div style="text-align: center; margin-top: 30px;">
+      <img src="logo.png" alt="Логотип проекта" style="max-width: 120px; margin-bottom: 10px;">
       <h1 class="project-title">Добрая территория</h1>
       <p class="project-description">
         Уважаемые руководители! Приветствуем вас на страницах проекта "Добрая Территория". Здесь размещены методические материалы, которые помогут вам организовать и провести этот замечательный проект в вашем учреждении.
       </p>
-    </header>
+    </div>
 
     <!-- Модули -->
-    <div class="modules-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    <div class="modules-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
       <!-- Модуль 1 -->
       <div class="module">
         <div class="block-header">
@@ -43,7 +44,6 @@
           <ul class="tasks-list">
             <li><a class="task-link" href="#">Задание 1.1</a></li>
             <li><a class="task-link" href="#">Задание 1.2</a></li>
-            <li><a class="task-link" href="#">Задание 1.3</a></li>
           </ul>
         </div>
       </div>
@@ -58,7 +58,6 @@
           <ul class="tasks-list">
             <li><a class="task-link" href="#">Задание 2.1</a></li>
             <li><a class="task-link" href="#">Задание 2.2</a></li>
-            <li><a class="task-link" href="#">Задание 2.3</a></li>
           </ul>
         </div>
       </div>
@@ -73,7 +72,6 @@
           <ul class="tasks-list">
             <li><a class="task-link" href="#">Задание 3.1</a></li>
             <li><a class="task-link" href="#">Задание 3.2</a></li>
-            <li><a class="task-link" href="#">Задание 3.3</a></li>
           </ul>
         </div>
       </div>
@@ -112,11 +110,19 @@
   </div>
 
   <script>
-    // Открытие блоков по клику
+    // Открытие/закрытие только одного блока за раз
     document.querySelectorAll('.block-header').forEach(header => {
       header.addEventListener('click', () => {
         const block = header.parentElement;
-        block.classList.toggle('active');
+        const isActive = block.classList.contains('active');
+
+        // Закрываем все
+        document.querySelectorAll('.module, .document-block, .brandbook-block').forEach(b => b.classList.remove('active'));
+
+        // Если был неактивен — активируем
+        if (!isActive) {
+          block.classList.add('active');
+        }
       });
     });
 
