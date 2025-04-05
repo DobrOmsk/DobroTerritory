@@ -355,7 +355,7 @@ body {
 .tasks-container,
 .documents-content,
 .brandbook-content {
-  position: absolute; /* Абсолютное позиционирование для выпадающего контента */
+  position: static; /* Абсолютное позиционирование для выпадающего контента */
   left: 0;
   right: 0;
   top: 100%; /* Позиционируем сразу под блоком */
@@ -383,7 +383,7 @@ body {
 .tasks-container,
 .documents-content,
 .brandbook-content {
-  position: absolute;
+  position: static;
   left: 0;
   right: 0;
   background: var(--white);
@@ -407,13 +407,6 @@ body {
 }
 
 
-
-/* Добавьте этот код в самый конец CSS */
-.modules-container,
-.documents-brandbook-container {
-  contain: layout; /* Предотвращает влияние соседних элементов */
-}
-
 .module-content-wrapper,
 .document-content-wrapper,
 .brandbook-content-wrapper {
@@ -424,7 +417,7 @@ body {
 .tasks-container,
 .documents-content,
 .brandbook-content {
-  position: absolute;
+  position: static;
   left: 0;
   right: 0;
   top: calc(100% - 1px);
@@ -457,7 +450,7 @@ body {
 .tasks-container,
 .documents-content,
 .brandbook-content {
-  position: absolute;
+  position: static;
   left: 0;
   right: 0;
   top: 100%;
@@ -512,7 +505,7 @@ body {
 .tasks-container,
 .documents-content,
 .brandbook-content {
-  position: absolute;
+  position: static;
   left: 0;
   right: 0;
   top: 100%;
@@ -528,12 +521,6 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.module:hover .tasks-container,
-.document-block:hover .documents-content,
-.brandbook-block:hover .brandbook-content {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 /* Мобильная версия */
 @media (max-width: 991px) {
