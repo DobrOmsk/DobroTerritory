@@ -97,29 +97,29 @@
     .hero {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: var(--white);
-      padding: 80px 0 40px;
+      padding: 40px 0 40px;
       text-align: center;
     }
 
     .hero-logo {
-      margin-bottom: 20px;
+      margin: 0 0 16px 0;
     }
 
     .hero-logo img {
-      height: 100px;
+      height: 230px;
       width: auto;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
     }
 
     .hero h1 {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     /* Module Content */
     .module-content {
-      padding: 60px 0;
+      padding: 40px 0 80px;
     }
 
     .module-description {
@@ -136,10 +136,10 @@
     }
 
     .tasks-section h2 {
-      font-size: 26px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 30px;
+      margin-bottom: 50px;
       text-align: center;
     }
 
@@ -190,19 +190,39 @@
       background: #e9e1f5;
     }
 
-    /* Back button */
-    .back-link {
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .nav-button {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       color: var(--primary);
       font-weight: 600;
-      margin-bottom: 20px;
-      transition: color 0.2s;
+      padding: 10px 20px;
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      transition: all 0.2s;
     }
 
-    .back-link:hover {
-      color: var(--secondary);
+    .nav-button:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .nav-button.next {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .nav-button.next:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
     }
 
     /* Footer */
@@ -223,16 +243,34 @@
         display: block;
       }
 
+      .hero {
+        padding: 30px 0 30px;
+      }
+
+      .hero-logo {
+        margin: 0 0 12px 0;
+      }
+
       .hero-logo img {
-        height: 80px;
+        height: 120px;
       }
 
       .hero h1 {
-        font-size: 24px;
+        font-size: 26px;
       }
 
       .module-content {
-        padding: 40px 0;
+        padding: 30px 0 60px;
+      }
+
+      .tasks-section h2 {
+        font-size: 26px;
+        margin-bottom: 40px;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        gap: 12px;
       }
 
       .task-item {
@@ -272,10 +310,15 @@
   <!-- Module Content -->
   <section class="module-content">
     <div class="container">
-      <a href="index.html" class="back-link">
-        <i class="fas fa-arrow-left"></i>
-        Вернуться на главную
-      </a>
+      <div class="nav-buttons">
+        <a href="index.html" class="nav-button">
+          <i class="fas fa-arrow-left"></i>
+          На главную
+        </a>
+        <a href="module2.html" class="nav-button next">
+          К модулю 2 <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
       
       <div class="module-description">
         <p>Данный модуль посвящён методам вовлечения жителей в развитие общественных пространств. Вы узнаете, как проводить диагностику территории, выявлять ключевые проблемы и ресурсы, а также создавать карты интересов для понимания потребностей сообщества.</p>
