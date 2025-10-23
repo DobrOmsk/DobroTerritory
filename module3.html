@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Модуль 1 — Добрая территория</title>
+  <title>Модуль 3 — Добрая территория</title>
   
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -48,7 +48,7 @@
 
     .container {
       width: 100%;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -106,20 +106,20 @@
     }
 
     .hero-logo img {
-      height: 230px;
+      height: 100px;
       width: auto;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
     }
 
     .hero h1 {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     /* Module Content */
     .module-content {
-      padding: 40px 0 80px;
+      padding: 60px 0;
     }
 
     .module-description {
@@ -136,10 +136,10 @@
     }
 
     .tasks-section h2 {
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 50px;
+      margin-bottom: 30px;
       text-align: center;
     }
 
@@ -191,38 +191,51 @@
     }
 
     /* Navigation buttons */
-    .nav-buttons {
+    .module-nav {
       display: flex;
-      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 30px;
     }
 
-    .nav-button {
+    .nav-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--primary);
       font-weight: 600;
       padding: 10px 20px;
-      border: 2px solid var(--primary);
       border-radius: 6px;
       transition: all 0.2s;
     }
 
-    .nav-button:hover {
-      background: var(--primary);
-      color: var(--white);
+    .prev-btn {
+      color: var(--primary);
+      border: 2px solid var(--secondary);
     }
 
-    .nav-button.next {
-      background: var(--primary);
-      color: var(--white);
-      border-color: var(--primary);
-    }
-
-    .nav-button.next:hover {
+    .prev-btn:hover {
       background: var(--secondary);
-      border-color: var(--secondary);
+      color: var(--white);
+    }
+
+    .home-btn {
+      color: var(--primary);
+      border: 2px solid var(--secondary);
+    }
+
+    .home-btn:hover {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    .next-btn {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .next-btn:hover {
+      background: var(--secondary);
+      color: var(--white);
     }
 
     /* Footer */
@@ -252,29 +265,25 @@
       }
 
       .hero-logo img {
-        height: 120px;
+        height: 80px;
       }
 
       .hero h1 {
-        font-size: 26px;
+        font-size: 24px;
       }
 
       .module-content {
-        padding: 30px 0 60px;
-      }
-
-      .tasks-section h2 {
-        font-size: 26px;
-        margin-bottom: 40px;
-      }
-
-      .nav-buttons {
-        flex-direction: column;
-        gap: 12px;
+        padding: 40px 0;
       }
 
       .task-item {
         padding: 20px;
+      }
+
+      .module-nav {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
       }
     }
   </style>
@@ -287,8 +296,8 @@
       <div class="logo">Добрая территория</div>
       <nav class="nav-links">
         <a href="index.html">Главная</a>
+        <a href="module1.html">Модуль 1</a>
         <a href="module2.html">Модуль 2</a>
-        <a href="module3.html">Модуль 3</a>
         <a href="documents.html">Документы</a>
       </nav>
       <div class="burger">
@@ -303,26 +312,30 @@
       <div class="hero-logo">
         <img src="logo.png" alt="Логотип Добрая территория">
       </div>
-      <h1>Модуль 3: Вовлечение сообщества</h1>
+      <h1>Модуль 3: Проектная деятельность</h1>
     </div>
   </section>
 
   <!-- Module Content -->
   <section class="module-content">
     <div class="container">
-      <div class="nav-buttons">
-        <a href="module2.html" class="nav-button next">
+      <div class="module-nav">
+        <a href="module1.html" class="nav-btn prev-btn">
           <i class="fas fa-arrow-left"></i>
-          К модулю 2 
+          К модулю 2
         </a>
-        <a href="index.html" class="nav-button">
+        <a href="index.html" class="nav-btn home-btn">
           <i class="fas fa-home"></i>
-          На главную
+          Вернуться на главную
         </a>
+        <span class="nav-btn placeholder">
+          <i class="fas fa-arrow-left"></i>
+          К Модулю 3
+        </span>
       </div>
       
       <div class="module-description">
-        <p>Данный модуль посвящён методам вовлечения жителей в развитие общественных пространств. Вы узнаете, как проводить диагностику территории, выявлять ключевые проблемы и ресурсы, а также создавать карты интересов для понимания потребностей сообщества.</p>
+        <p>Данный модуль посвящён разработке и реализации социальных инициатив. Вы научитесь формулировать проектные идеи, разрабатывать пошаговые планы реализации и работать с ресурсами для достижения поставленных целей.</p>
       </div>
 
       <div class="tasks-section">
@@ -332,13 +345,13 @@
         <div class="task-item">
           <div class="task-title">
             <i class="fas fa-tasks"></i>
-            Задание 1.1: Диагностика территории
+            Задание 3.1: Идея проекта
           </div>
-          <p class="task-description">Проведите анализ текущего состояния территории и выявите ключевые проблемы и ресурсы. Используйте предложенные инструменты для сбора информации и документирования результатов.</p>
+          <p class="task-description">Сформулируйте идею проекта, ориентированного на решение локальной проблемы. Определите целевую аудиторию и ожидаемые результаты.</p>
           <div class="files">
             <a href="#" class="file-link">
               <i class="fas fa-file-pdf"></i>
-              Анкета_диагностики.pdf
+              Чек-лист_идеи.pdf
             </a>
           </div>
         </div>
@@ -347,17 +360,13 @@
         <div class="task-item">
           <div class="task-title">
             <i class="fas fa-tasks"></i>
-            Задание 1.2: Карта интересов
+            Задание 2.2: План реализации
           </div>
-          <p class="task-description">Создайте карту интересов жителей для понимания их потребностей. Это поможет определить приоритетные направления работы и сформировать группу активных участников.</p>
+          <p class="task-description">Разработайте пошаговый план реализации проекта с учётом имеющихся ресурсов, сроков и ключевых этапов работы.</p>
           <div class="files">
             <a href="#" class="file-link">
-              <i class="fas fa-file-powerpoint"></i>
-              Шаблон_карты.pptx
-            </a>
-            <a href="#" class="file-link">
               <i class="fas fa-file-pdf"></i>
-              Инструкция.pdf
+              Шаблон_плана.pdf
             </a>
           </div>
         </div>
@@ -366,17 +375,13 @@
         <div class="task-item">
           <div class="task-title">
             <i class="fas fa-tasks"></i>
-            Задание 1.3: Проведение встречи с жителями
+            Задание 2.3: Ресурсное обеспечение
           </div>
-          <p class="task-description">Организуйте и проведите встречу с жителями для обсуждения выявленных проблем и возможных решений. Подготовьте сценарий и материалы для эффективного взаимодействия.</p>
+          <p class="task-description">Определите необходимые ресурсы для реализации проекта и разработайте стратегию их привлечения и использования.</p>
           <div class="files">
             <a href="#" class="file-link">
               <i class="fas fa-file-pdf"></i>
-              Сценарий_встречи.pdf
-            </a>
-            <a href="#" class="file-link">
-              <i class="fas fa-file-powerpoint"></i>
-              Презентация_для_жителей.pptx
+              Матрица_ресурсов.pdf
             </a>
           </div>
         </div>
@@ -385,13 +390,13 @@
         <div class="task-item">
           <div class="task-title">
             <i class="fas fa-tasks"></i>
-            Задание 1.4: Анализ результатов
+            Задание 2.4: Мониторинг и оценка
           </div>
-          <p class="task-description">Проанализируйте результаты проведённой работы и сформулируйте выводы. Определите следующие шаги для вовлечения сообщества в проектные инициативы.</p>
+          <p class="task-description">Разработайте систему мониторинга и оценки эффективности проекта для отслеживания прогресса и корректировки планов.</p>
           <div class="files">
             <a href="#" class="file-link">
               <i class="fas fa-file-pdf"></i>
-              Форма_анализа.pdf
+              Форма_оценки.pdf
             </a>
           </div>
         </div>
