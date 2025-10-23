@@ -208,22 +208,19 @@
       transition: all 0.2s;
     }
 
-    .prev-btn {
+    .placeholder {
+      visibility: hidden;
+      pointer-events: none;
+      color: transparent;
+      border: 2px solid transparent;
+    }
+
+    .back-link {
       color: var(--primary);
       border: 2px solid var(--secondary);
     }
 
-    .prev-btn:hover {
-      background: var(--secondary);
-      color: var(--white);
-    }
-
-    .home-btn {
-      color: var(--primary);
-      border: 2px solid var(--secondary);
-    }
-
-    .home-btn:hover {
+    .back-link:hover {
       background: var(--secondary);
       color: var(--white);
     }
@@ -284,6 +281,10 @@
         flex-direction: column;
         gap: 15px;
         align-items: center;
+      }
+      
+      .placeholder {
+        display: none;
       }
     }
   </style>
