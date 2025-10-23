@@ -194,7 +194,13 @@
     .module-nav {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 30px;
+    }
+
+    .back-link-wrapper {
+      flex: 1;
+      text-align: center;
     }
 
     .back-link {
@@ -229,6 +235,11 @@
     .next-btn:hover {
       background: var(--secondary);
       color: var(--white);
+    }
+
+    /* Spacer for centering */
+    .nav-spacer {
+      width: 120px; /* Same width as next-btn for balance */
     }
 
     /* Footer */
@@ -276,6 +287,16 @@
       .module-nav {
         flex-direction: column;
         gap: 15px;
+        align-items: center;
+      }
+
+      .nav-spacer {
+        display: none;
+      }
+
+      .back-link-wrapper {
+        text-align: center;
+        width: 100%;
       }
     }
   </style>
@@ -312,10 +333,13 @@
   <section class="module-content">
     <div class="container">
       <div class="module-nav">
-        <a href="index.html" class="back-link">
-          <i class="fas fa-home"></i>
-          Вернуться на главную
-        </a>
+        <div class="nav-spacer"></div>
+        <div class="back-link-wrapper">
+          <a href="index.html" class="back-link">
+            <i class="fas fa-home"></i>
+            Вернуться на главную
+          </a>
+        </div>
         <a href="module2.html" class="next-btn">
           К Модулю 2
           <i class="fas fa-arrow-right"></i>
