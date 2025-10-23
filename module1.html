@@ -92,7 +92,7 @@
       display: none;
       font-size: 24px;
       cursor: pointer;
-      color: var(--primary);
+      color: var(--primary); /* Сиреневый цвет как у логотипа */
     }
 
     /* Mobile Menu */
@@ -307,12 +307,27 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+      .container {
+        padding: 0 16px;
+      }
+
+      .header-inner {
+        padding: 12px 0;
+      }
+
+      .logo {
+        font-size: 20px;
+        margin-left: 4px;
       }
 
       .burger {
         display: block;
+        margin-right: 4px;
+        color: var(--primary); /* Сиреневый цвет сохраняется и в мобильной версии */
+      }
+
+      .nav-links {
+        display: none;
       }
 
       .hero {
@@ -347,6 +362,30 @@
       
       .placeholder {
         display: none;
+      }
+
+      .mobile-nav-links a {
+        padding: 15px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .header-inner {
+        padding: 10px 0;
+      }
+
+      .logo {
+        font-size: 18px;
+        margin-left: 2px;
+      }
+
+      .burger {
+        margin-right: 2px;
+        color: var(--primary); /* Сиреневый цвет сохраняется и на маленьких экранах */
       }
     }
   </style>
@@ -542,5 +581,3 @@
   </script>
 </body>
 </html>
-</html>
-
