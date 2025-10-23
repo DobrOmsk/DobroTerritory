@@ -198,21 +198,26 @@
       margin-bottom: 30px;
     }
 
-    .back-link-wrapper {
-      flex: 1;
-      text-align: center;
-    }
-
-    .back-link {
+    .nav-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--primary);
       font-weight: 600;
       padding: 10px 20px;
-      border: 2px solid var(--secondary);
       border-radius: 6px;
       transition: all 0.2s;
+    }
+
+    .placeholder {
+      visibility: hidden;
+      pointer-events: none;
+      color: transparent;
+      border: 2px solid transparent;
+    }
+
+    .back-link {
+      color: var(--primary);
+      border: 2px solid var(--secondary);
     }
 
     .back-link:hover {
@@ -221,25 +226,13 @@
     }
 
     .next-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       background: var(--primary);
       color: var(--white);
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 6px;
-      transition: background 0.2s;
     }
 
     .next-btn:hover {
       background: var(--secondary);
       color: var(--white);
-    }
-
-    /* Spacer for centering */
-    .nav-spacer {
-      width: 120px; /* Same width as next-btn for balance */
     }
 
     /* Footer */
@@ -289,14 +282,9 @@
         gap: 15px;
         align-items: center;
       }
-
-      .nav-spacer {
+      
+      .placeholder {
         display: none;
-      }
-
-      .back-link-wrapper {
-        text-align: center;
-        width: 100%;
       }
     }
   </style>
@@ -333,15 +321,16 @@
   <section class="module-content">
     <div class="container">
       <div class="module-nav">
-        <div class="nav-spacer"></div>
-        <div class="back-link-wrapper">
-          <a href="index.html" class="back-link">
-            <i class="fas fa-home"></i>
-            Вернуться на главную
-          </a>
-        </div>
-        <a href="module2.html" class="next-btn">
-          К модулю 2
+        <span class="nav-btn placeholder">
+          <i class="fas fa-arrow-left"></i>
+          К Модулю 1
+        </span>
+        <a href="index.html" class="nav-btn back-link">
+          <i class="fas fa-home"></i>
+          Вернуться на главную
+        </a>
+        <a href="module2.html" class="nav-btn next-btn">
+          К Модулю 2
           <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -417,6 +406,429 @@
             <a href="#" class="file-link">
               <i class="fas fa-file-pdf"></i>
               Форма_анализа.pdf
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Проект «Добрая территория». Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile menu toggle
+    document.querySelector('.burger').addEventListener('click', function() {
+      alert('Мобильное меню будет реализовано в полной версии');
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Модуль 2 — Добрая территория</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #61338b;
+      --secondary: #AB89CC;
+      --accent: #fdd14d;
+      --white: #ffffff;
+      --light-bg: #fafafa;
+      --text: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--white);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: var(--primary);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .burger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: var(--white);
+      padding: 40px 0 40px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      margin: 0 0 16px 0;
+    }
+
+    .hero-logo img {
+      height: 100px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* Module Content */
+    .module-content {
+      padding: 60px 0;
+    }
+
+    .module-description {
+      background: var(--light-bg);
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .module-description p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .tasks-section h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .task-item {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--primary);
+    }
+
+    .task-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .task-description {
+      margin-bottom: 16px;
+      color: #555;
+      font-size: 16px;
+    }
+
+    .files {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .file-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--light-bg);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 15px;
+      color: var(--primary);
+      transition: background 0.2s;
+    }
+
+    .file-link:hover {
+      background: #e9e1f5;
+    }
+
+    /* Navigation buttons */
+    .module-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .prev-btn {
+      color: var(--primary);
+      border: 2px solid var(--secondary);
+    }
+
+    .prev-btn:hover {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    .home-btn {
+      color: var(--primary);
+      border: 2px solid var(--secondary);
+    }
+
+    .home-btn:hover {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    .next-btn {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .next-btn:hover {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--light-bg);
+      padding: 40px 0;
+      text-align: center;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .hero {
+        padding: 30px 0 30px;
+      }
+
+      .hero-logo {
+        margin: 0 0 12px 0;
+      }
+
+      .hero-logo img {
+        height: 80px;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .module-content {
+        padding: 40px 0;
+      }
+
+      .task-item {
+        padding: 20px;
+      }
+
+      .module-nav {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">Добрая территория</div>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="module1.html">Модуль 1</a>
+        <a href="module3.html">Модуль 3</a>
+        <a href="documents.html">Документы</a>
+      </nav>
+      <div class="burger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logo">
+        <img src="logo.png" alt="Логотип Добрая территория">
+      </div>
+      <h1>Модуль 2: Проектная деятельность</h1>
+    </div>
+  </section>
+
+  <!-- Module Content -->
+  <section class="module-content">
+    <div class="container">
+      <div class="module-nav">
+        <a href="module1.html" class="nav-btn prev-btn">
+          <i class="fas fa-arrow-left"></i>
+          К Модулю 1
+        </a>
+        <a href="index.html" class="nav-btn home-btn">
+          <i class="fas fa-home"></i>
+          На главную
+        </a>
+        <a href="module3.html" class="nav-btn next-btn">
+          К Модулю 3
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <div class="module-description">
+        <p>Данный модуль посвящён разработке и реализации социальных инициатив. Вы научитесь формулировать проектные идеи, разрабатывать пошаговые планы реализации и работать с ресурсами для достижения поставленных целей.</p>
+      </div>
+
+      <div class="tasks-section">
+        <h2>Задания модуля</h2>
+        
+        <!-- Task 1 -->
+        <div class="task-item">
+          <div class="task-title">
+            <i class="fas fa-tasks"></i>
+            Задание 2.1: Идея проекта
+          </div>
+          <p class="task-description">Сформулируйте идею проекта, ориентированного на решение локальной проблемы. Определите целевую аудиторию и ожидаемые результаты.</p>
+          <div class="files">
+            <a href="#" class="file-link">
+              <i class="fas fa-file-pdf"></i>
+              Чек-лист_идеи.pdf
+            </a>
+          </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="task-item">
+          <div class="task-title">
+            <i class="fas fa-tasks"></i>
+            Задание 2.2: План реализации
+          </div>
+          <p class="task-description">Разработайте пошаговый план реализации проекта с учётом имеющихся ресурсов, сроков и ключевых этапов работы.</p>
+          <div class="files">
+            <a href="#" class="file-link">
+              <i class="fas fa-file-pdf"></i>
+              Шаблон_плана.pdf
+            </a>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="task-item">
+          <div class="task-title">
+            <i class="fas fa-tasks"></i>
+            Задание 2.3: Ресурсное обеспечение
+          </div>
+          <p class="task-description">Определите необходимые ресурсы для реализации проекта и разработайте стратегию их привлечения и использования.</p>
+          <div class="files">
+            <a href="#" class="file-link">
+              <i class="fas fa-file-pdf"></i>
+              Матрица_ресурсов.pdf
+            </a>
+          </div>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="task-item">
+          <div class="task-title">
+            <i class="fas fa-tasks"></i>
+            Задание 2.4: Мониторинг и оценка
+          </div>
+          <p class="task-description">Разработайте систему мониторинга и оценки эффективности проекта для отслеживания прогресса и корректировки планов.</p>
+          <div class="files">
+            <a href="#" class="file-link">
+              <i class="fas fa-file-pdf"></i>
+              Форма_оценки.pdf
             </a>
           </div>
         </div>
