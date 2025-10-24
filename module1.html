@@ -71,11 +71,13 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--primary);
+      margin-left: 8px; /* Добавлен отступ слева */
     }
 
     .nav-links {
       display: flex;
       gap: 24px;
+      margin-right: 8px; /* Добавлен отступ справа */
     }
 
     .nav-links a {
@@ -92,7 +94,7 @@
       display: none;
       font-size: 24px;
       cursor: pointer;
-      color: var(--primary); /* Сиреневый цвет как у логотипа */
+      color: var(--primary);
     }
 
     /* Mobile Menu */
@@ -320,10 +322,14 @@
         margin-left: 4px;
       }
 
+      .nav-links {
+        margin-right: 0; /* Убираем отступ в мобильной версии */
+      }
+
       .burger {
         display: block;
         margin-right: 4px;
-        color: var(--primary); /* Сиреневый цвет сохраняется и в мобильной версии */
+        color: var(--primary);
       }
 
       .nav-links {
@@ -385,7 +391,7 @@
 
       .burger {
         margin-right: 2px;
-        color: var(--primary); /* Сиреневый цвет сохраняется и на маленьких экранах */
+        color: var(--primary);
       }
     }
   </style>
